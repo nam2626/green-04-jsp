@@ -15,7 +15,10 @@
 		request.setAttribute("txt", text);
 		
 		//type에 따라서 이동하는 방법을 다르게 처리
-		request.getRequestDispatcher("forward.jsp").forward(request, response);
+		if(type.equals("forward"))
+			request.getRequestDispatcher("forward.jsp").forward(request, response);
+		else
+			response.sendRedirect("redirect.jsp");
 	%>
 	
 	
