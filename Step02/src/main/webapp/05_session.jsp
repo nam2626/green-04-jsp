@@ -12,6 +12,12 @@
 	<%
 		session.setAttribute("user", "홍길동");
 		request.setAttribute("text", "안녕하세요");
+		
+		//쿠키 생성 및 만료시간(초) 등록
+		Cookie cookie = new Cookie("keyword","맥북");
+		cookie.setMaxAge(30);
+		
+		response.addCookie(cookie);
 	%>
 </body>
 </html>
