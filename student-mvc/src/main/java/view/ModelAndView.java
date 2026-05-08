@@ -16,8 +16,10 @@ public class ModelAndView {
 	}
 
 	public String getPath() {
+		//forward 일때만 적용
 		if(!redirect)
 			return PREFIX + path + SURFFIX;
+		//redirect 일때만 적용
 		return path;
 	}
 
