@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * Servlet implementation class SecondServlet
@@ -26,9 +27,17 @@ public class SecondServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//txt 데이터 꺼내기
+		//사용자가 보낸 txt 데이터 꺼내기
 		String txt = request.getParameter("txt");
 		System.out.println(txt);
+		//응답할 데이터 셋팅
+		request.setAttribute("date", new Date().toLocaleString());
+		request.setAttribute("txt", txt);
+		request.setAttribute("num", 100);
+		
+		//페이지 이동
+		request.getRequestDispatcher("./second.jsp").forward(request, response);
+		
 	}
 
 	/**
