@@ -9,5 +9,6 @@
 <body>
 	<h2>로그인 성공</h2>
 	<p><%=session.getAttribute("msg") %></p>
+	<a href="./logout">로그아웃</a>
 </body>
 </html>
