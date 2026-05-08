@@ -57,11 +57,46 @@
 		<c:otherwise>
 			<p>40대 이상입니다</p>
 		</c:otherwise>	
-	
 	</c:choose>
 	<!-- 반복문 -->
+	<ul>
+		<!-- var : 반복문 제어변수, begin : 시작값, end : 마지막값, step : 증감값 -->
+		<c:forEach var="i" begin="1" end="10" step="1">
+			<li>${i }</li>
+		</c:forEach>
+	</ul>
+	<!--
+		상태변수
+			current : 현재 아이템 값
+			index : begin-end로 구성했을때는 var 값, items로 가져왔을때는 인덱스 번호
+			count : 1부터 순서값 시작
+			first : 해당 순서가 첫번째인지 확인
+			last : 해당 순서가 마지막인지 확인
+			begin : 시작값
+			end : 마지막값
+			step : 증가값
+	-->
+	<ul>
+		<c:forEach var="i" begin="1" end="10" step="2" varStatus="status">
+			<li>${i }, ${status.current },${status.begin },${status.end },
+				${status.first },${status.last },${status.step },${status.count }
+				,${status.index }</li>
+		</c:forEach>
+	</ul>	
+	<!-- 리스트에 있는 데이터 꺼내기 -->
+	<ul>
+		<c:forEach var="member" items="${requestScope.list }" varStatus="status">
+			<li>${member },${status.index },${status.count }</li>
+		</c:forEach>
+	</ul>
+	
 </body>
 </html>
+
+
+
+
+
 
 
 
