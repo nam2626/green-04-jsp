@@ -33,9 +33,9 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();//세션 정보 가져옴
 		if(id.equals("admin") && passwd.equals("123456")) {
 			session.setAttribute("msg", id + "님 환영합니다.");
-			response.sendRedirect("./login_success.jsp");
+			request.getRequestDispatcher("/WEB-INF/views/login_success.jsp").forward(request, response);
 		}else {
-			response.sendRedirect("./login_fail.jsp");
+			request.getRequestDispatcher("/WEB-INF/views/login_fail.jsp").forward(request, response);
 		}
 	}
 
