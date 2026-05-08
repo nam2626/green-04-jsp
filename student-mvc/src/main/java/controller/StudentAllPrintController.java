@@ -23,6 +23,7 @@ public class StudentAllPrintController implements Controller {
 		for (StudentVO vo : list) {
 			vo.printInfo();			
 		}
+		return null;
 	}
 }
 
