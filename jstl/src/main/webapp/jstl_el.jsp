@@ -24,11 +24,55 @@
 		<li>${sessionScope.user.id }</li>
 		<li>${sessionScope.user.name }</li>
 		<li>${sessionScope.user.passwd }</li>
-		<li>${sessionScope.user.nick }</li>
+		<li>${sessionScope.user.nick }</li> 
 		<li>${sessionScope.user.toString() }</li>
 	</ul>
+	<!-- 영역(scope) 쓰지 않으면 자동 검색
+		page -> request -> session -> application
+	 -->
+	<p> msg : ${msg }</p>	
+	<h2>jstl(JSP Standard Tag Library)</h2>
+	<!-- set : 변수 선언해서 초기화 -->
+	<c:set var="num" value="1000"></c:set>
+	<c:set var="obj" value="${sessionScope.user }" scope="request"  />
+	<p>${num }, ${requestScope.obj }</p>
+	<!-- out : 출력 -->
+	<p><c:out value="${num }" default="숫자 없음"/></p>
+	<p><c:out value="${num1 }" default="숫자 없음"/></p>
+	<!-- if -->
+	<c:if test="${age >= 20}">
+		<p>성인입니다.</p>
+	</c:if>	
+	<c:if test="${age < 20}">
+		<p>미성년자 입니다.</p>
+	</c:if>	
+	<!-- choose, when otherwise -->
+	<c:choose>
+		<c:when test="${age >= 20 && age < 30 }">
+			<p>20대 입니다.</p>
+		</c:when>
+		<c:when test="${age >= 30 && age < 40 }">
+			<p>30대 입니다.</p>
+		</c:when>
+		<c:otherwise>
+			<p>40대 이상입니다</p>
+		</c:otherwise>	
+	
+	</c:choose>
+	<!-- 반복문 -->
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
