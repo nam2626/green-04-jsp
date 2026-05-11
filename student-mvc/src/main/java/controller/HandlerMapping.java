@@ -21,6 +21,12 @@ public class HandlerMapping {
 		case "main.do":
 			controller = new StudentAllPrintController();
 			break;
+		case "insertView.do":
+			controller = new StudentInertViewController();
+			break;
+		case "insert.do":
+			controller = new StudentInsertController();
+			break;
 		}
 		return controller;
 	}

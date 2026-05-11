@@ -15,8 +15,25 @@
 	<main>
 		<section>
 			<table>
-			<!-- jstl을 이용해서 request 영역에 저장된 list를 표 형태로 출력 -->
-				
+				<thead>
+					<tr>
+						<th>학번</th>
+						<th>이름</th>
+						<th>학과명</th>
+						<th>평점</th>
+					</tr>
+				</thead>
+				<tbody>
+				<!-- jstl을 이용해서 request 영역에 저장된 list를 표 형태로 출력 -->
+				<c:forEach var="dto" items="${requestScope.list }">
+					<tr>
+						<td>${dto.no }</td>
+						<td>${dto.name }</td>
+						<td>${dto.majorName }</td>
+						<td>${dto.score }</td>
+					</tr>
+				</c:forEach>
+				</tbody>
 			</table>
 		</section>
 	</main>		

@@ -15,8 +15,20 @@ import vo.StudentVO;
 public class StudentInsertController implements Controller {
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		System.out.println("학생정보등록을 시작합니다......");
-		return null;
+		String no = request.getParameter("no");
+		String name = request.getParameter("name");
+		String majorName = request.getParameter("majorName");
+		double score = Double.parseDouble(request.getParameter("score"));
+		System.out.println(no + " , " + name  + " , " + majorName  + " , " + score);
+		
+		boolean flag = StudentService.getInstance()
+				.appendStudentVO(new StudentVO(no, name, majorName, score));
+		ModelAndView view = new ModelAndView("insert_result", false);
+		
+		request.setAttribute("flag", flag);
+		request.setAttribute("msg", flag ? "학생정보 추가가 완료되었습니다." : "학생정보 등록 실패");
+		
+		return view;
 		
 		// 1. 학번 입력 및 중복 체크
 		// 서비스 클래스의 싱글톤 인스턴스를 활용하여 기존 데이터 확인
