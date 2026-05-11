@@ -21,6 +21,7 @@
 						<th>이름</th>
 						<th>학과명</th>
 						<th>평점</th>
+						<th>작업</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -31,6 +32,11 @@
 						<td>${dto.name }</td>
 						<td>${dto.majorName }</td>
 						<td>${dto.score }</td>
+						<td>
+							<a href="./delete.do?no=${dto.no }">삭제</a> 
+							/
+							<a href="./updateView.do?no=${dto.no }">수정</a> 
+						</td>
 					</tr>
 				</c:forEach>
 				</tbody>
