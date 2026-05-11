@@ -18,12 +18,13 @@ public class StudentAllPrintController implements Controller {
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		ArrayList<StudentVO> list = StudentService.getInstance().getList();
 		
-		System.out.println("전체 학생정보를 조회합니다.............");
+		//사용자에게 전달할 데이터를 셋팅
+		request.setAttribute("list", list);
 		
-		for (StudentVO vo : list) {
-			vo.printInfo();			
-		}
-		return null;
+		//이동할 경로 셋팅
+		ModelAndView view = new ModelAndView("main", false);		
+
+		return view;
 	}
 }
 

@@ -47,7 +47,7 @@ public class DispatcherServlet extends HttpServlet {
 		
 		//페이지 이동
 		if(view == null) {
-			response.sendRedirect(contextPath +"/" + "index.jsp");
+			response.sendRedirect(contextPath +"/main.do");
 		}else {
 			if(view.isRedirect()) {
 				//redirect
