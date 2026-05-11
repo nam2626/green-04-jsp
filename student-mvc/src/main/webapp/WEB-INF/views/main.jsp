@@ -17,6 +17,14 @@
 			<table>
 				<thead>
 					<tr>
+						<td colspan="5">
+							<form action="./search.do" method="get">
+								<input type="text" name="name" placeholder="이름 일부 입력">
+								<button>검색</button>
+							</form>
+						</td>
+					</tr>
+					<tr>
 						<th>학번</th>
 						<th>이름</th>
 						<th>학과명</th>
