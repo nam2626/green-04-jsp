@@ -5,7 +5,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import view.ModelAndView;
+
 import java.io.IOException;
+
+import controller.Controller;
+import controller.HandlerMapping;
 
 /**
  * Servlet implementation class DispatcherServlet
@@ -32,6 +37,27 @@ public class DispatcherServlet extends HttpServlet {
 		System.out.println(uri);
 		System.out.println(contextPath);
 		System.out.println(path);
+		//작업 시작
+		Controller controller = HandlerMapping.getInstance().createController(path);
+		
+		// 페이지 이동할 곳 정보를 담고 있는 객체 ModelAndView
+		ModelAndView view = null;
+		if(controller != null)
+			view = controller.execute(request, response);
+		
+		//페이지 이동
+		if(view == null) {
+			response.sendRedirect(contextPath +"/" + "index.jsp");
+		}else {
+			if(view.isRedirect()) {
+				//redirect
+				response.sendRedirect(contextPath +"/" + view.getPath());
+			}else {
+				//forward
+				request.getRequestDispatcher(view.getPath()).forward(request, response);
+			}
+		}
+		
 		
 	}
 
