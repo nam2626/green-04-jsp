@@ -12,4 +12,8 @@ public interface StudentMapper {
 	public StudentDTO1 selectForNo(String no);
 
 	public int insertStudent(StudentDTO1 dto);
+
+	public int deleteStudent(String no);
+
+	public int updateStudent(StudentDTO1 dto);
 }

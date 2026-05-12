@@ -30,12 +30,29 @@ public class TestMain {
 //		System.out.println(dto);
 		
 		//학생정보 한건 추가
-		StudentDTO1 dto = new StudentDTO1("2222222","김철수","물리학과",3.5);
-		int count = mapper.insertStudent(dto);
+//		StudentDTO1 dto = new StudentDTO1("2222222","김철수","물리학과",3.5);
+//		int count = mapper.insertStudent(dto);
+//		System.out.println("결과 : " + count);
+		
+		//학생정보 한건 삭제
+//		String no = "2222222";
+//		int count = mapper.deleteStudent(no);
+//		System.out.println("결과 : " + count);
+		
+		//학생정보 수정
+		StudentDTO1 dto = new StudentDTO1("20229928","김철수","물리학과",3.5);
+		int count = mapper.updateStudent(dto);
 		System.out.println("결과 : " + count);
 	}
 
 }
+
+
+
+
+
+
+
 
 
 

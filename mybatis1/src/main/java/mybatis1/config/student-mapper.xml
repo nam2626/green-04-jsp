@@ -16,7 +16,19 @@
 		insert into students(student_id, name, department, gpa)
 		values(#{student_id},#{name},#{department},#{gpa})	
 	</insert>
+	<delete id="deleteStudent">
+		delete from students
+		where student_id = #{id}
+	</delete>
+	
+	<update id="updateStudent">
+		update students set name=#{name}, department=#{department}, gpa=#{gpa}
+		where student_id = #{student_id}
+	</update>
 </mapper>
+
+
+
 
 
 
