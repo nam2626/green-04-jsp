@@ -47,6 +47,11 @@
 						</td>
 					</tr>
 				</c:forEach>
+				<c:if test="${list.isEmpty() }">
+					<tr>
+						<td colspan="6">검색 또는 데이터가 없습니다.</td>
+					</tr>
+				</c:if>
 				</tbody>
 			</table>
 		</section>

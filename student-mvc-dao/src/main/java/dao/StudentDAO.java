@@ -131,6 +131,32 @@ public class StudentDAO {
 		return result;
 	}
 
+	public ArrayList<StudentVO> selectForNameStudent(String name) {
+		ArrayList<StudentVO> list = new ArrayList<StudentVO>();
+
+		// 1. SQL문작성
+		String sql = "select * from students where name like concat('%',?,'%')";
+		// 2. PreparedStatement 생성
+		try (PreparedStatement pstmt = DBManager.getInstance().getConn().prepareStatement(sql)) {
+			pstmt.setString(1, name);
+			// 3. SQL 실행
+			try (ResultSet rs = pstmt.executeQuery()) {
+				// 4. 결과를 list에 저장
+				while (rs.next()) {
+					String no = rs.getString(1);
+					String sname = rs.getString(2);
+					String majorName = rs.getString(3);
+					double score = rs.getDouble(4);
+					list.add(new StudentVO(no, sname, majorName, score));
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
 }
 
 

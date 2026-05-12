@@ -48,15 +48,8 @@ public class StudentService {
 		return dao.deleteStudent(no) != 0;
 	}
 
-	/**
-	 * 학생 이름을 키워드로 검색하여 일치하는 첫 번째 객체를 반환함
-	 * (부분 일치 검색 지원)
-	 * @param name 검색할 이름 (또는 키워드)
-	 * @return 찾으면 StudentVO 객체, 못 찾으면 null
-	 */
-	public StudentVO searchStudentVOForName(String name) {
-	
-		return null;
+	public ArrayList<StudentVO> searchStudentVOForName(String name) {
+		return dao.selectForNameStudent(name);
 	}
 
 	public ArrayList<StudentVO> selectAllStudent() {
