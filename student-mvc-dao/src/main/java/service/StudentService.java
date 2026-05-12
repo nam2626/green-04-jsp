@@ -63,30 +63,10 @@ public class StudentService {
 		return -1;
 	}
 
-	/**
-	 * 학번 중복 여부를 체크하는 메서드 (Stream API 활용)
-	 * @param no 체크할 학번
-	 * @return 중복이면 true, 아니면 false
-	 */
-	public boolean checkDuplicateStudent(String no) {
-		return list.stream().filter(t -> t.getNo().equals(no)).count() != 0;
-	}
-	
-	/**
-	 * 학번을 기준으로 학생 객체를 직접 찾는 메서드 (equals 활용)
-	 * @param no 검색할 학번
-	 * @return 학생 객체
-	 */
 	public StudentVO searchStudentVO2(String no) {
-		int i = list.indexOf(new StudentVO(no, null, null, 0));
-		return list.get(i);
+		return dao.selectStudent(no);
 	}
 
-	/**
-	 * 새로운 학생 정보를 리스트에 추가하는 메서드
-	 * @param vo 추가할 학생 VO 객체
-	 * @return 추가 성공 여부
-	 */
 	public boolean appendStudentVO(StudentVO vo) {
 		return dao.insertStudent(vo) != 0;
 	}
