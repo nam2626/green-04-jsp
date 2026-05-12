@@ -47,8 +47,38 @@ public class StudentDAO {
 		return list;
 	}
 	
+	public int insertStudent(StudentVO vo) {
+		int result = 0;
+		
+		String sql = "insert into students(student_id,name,department,gpa) "
+				+ "values(?,?,?,?)";
+		
+		try(PreparedStatement pstmt = 
+				DBManager.getInstance().getConn().prepareStatement(sql)){
+			//SQL에 데이터 셋팅
+			pstmt.setString(1, vo.getNo());
+			pstmt.setString(2, vo.getName());
+			pstmt.setString(3, vo.getMajorName());
+			pstmt.setDouble(4, vo.getScore());
+			//SQL 실행
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;		
+	}
 	
 }
+
+
+
+
+
+
+
+
 
 
 
