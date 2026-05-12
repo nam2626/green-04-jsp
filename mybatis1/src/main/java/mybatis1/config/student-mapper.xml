@@ -25,6 +25,11 @@
 		update students set name=#{name}, department=#{department}, gpa=#{gpa}
 		where student_id = #{student_id}
 	</update>
+	<!-- 학과별 학생수, 학과명, 학생수  -->
+	<select id="selectStudentDeptCount" resultType="map">
+		select department as major_name, count(*) as major_count 
+		from students group by department
+	</select>
 </mapper>
 
 
