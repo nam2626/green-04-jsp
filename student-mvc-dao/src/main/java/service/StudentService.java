@@ -3,6 +3,7 @@ package service;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import dao.StudentDAO;
 import vo.StudentVO;
 
 /**
@@ -15,10 +16,14 @@ public class StudentService {
 	// 데이터 저장용 리스트 생성
 	private ArrayList<StudentVO> list;
 	
+	private StudentDAO dao;
+	
 	/**
 	 * 외부에서 직접 객체 생성을 못하도록 생성자를 private으로 설정
 	 */
 	private StudentService() {
+		dao = StudentDAO.getInstance();
+		
 		list = new ArrayList<StudentVO>();
 		//리스트에 샘플 데이터 초기화
 		list.add(new StudentVO("20230001", "홍길동", "컴퓨터공학과", 4.5));
@@ -118,6 +123,10 @@ public class StudentService {
 			}
 		}
 		return null;
+	}
+
+	public ArrayList<StudentVO> selectAllStudent() {
+		return dao.selectAllStudent();
 	}
 }
 
