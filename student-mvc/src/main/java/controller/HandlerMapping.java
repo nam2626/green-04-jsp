@@ -37,6 +37,9 @@ public class HandlerMapping {
 		case "update.do":
 			controller = new StudentUpdateController();
 			break;
+		case "search.do":
+			controller = new StudentSearchForNameController();
+			break;
 		}
 		return controller;
 	}
