@@ -1,6 +1,7 @@
 package mybatis1.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import mybatis1.dto.StudentDTO1;
 
@@ -16,4 +17,12 @@ public interface StudentMapper {
 	public int deleteStudent(String no);
 
 	public int updateStudent(StudentDTO1 dto);
+	
+	public List<Map<String, Object>> selectStudentDeptCount();
 }
+
+
+
+
+
+

@@ -1,6 +1,7 @@
 package mybatis1.main;
 
 import java.util.List;
+import java.util.Map;
 
 import mybatis1.config.DBManager;
 import mybatis1.dto.StudentDTO1;
@@ -40,9 +41,16 @@ public class TestMain {
 //		System.out.println("결과 : " + count);
 		
 		//학생정보 수정
-		StudentDTO1 dto = new StudentDTO1("20229928","김철수","물리학과",3.5);
-		int count = mapper.updateStudent(dto);
-		System.out.println("결과 : " + count);
+//		StudentDTO1 dto = new StudentDTO1("20229928","김철수","물리학과",3.5);
+//		int count = mapper.updateStudent(dto);
+//		System.out.println("결과 : " + count);
+		
+		//학과별 학생 수 출력
+		List<Map<String, Object>> list = mapper.selectStudentDeptCount();
+		for(Map<String, Object> map : list) {
+//			System.out.println(map);
+			System.out.println(map.get("major_name") + " : " + map.get("major_count"));
+		}
 	}
 
 }
