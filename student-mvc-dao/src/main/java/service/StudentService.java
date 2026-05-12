@@ -88,10 +88,7 @@ public class StudentService {
 	 * @return 추가 성공 여부
 	 */
 	public boolean appendStudentVO(StudentVO vo) {
-		//중복이면 true
-		if(checkDuplicateStudent(vo.getNo()))
-			return false;
-		return list.add(vo);
+		return dao.insertStudent(vo) != 0;
 	}
 
 	/**
