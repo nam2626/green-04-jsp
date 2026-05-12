@@ -29,7 +29,10 @@ public class TestMain {
 //		StudentDTO1 dto = mapper.selectForNo(no);//결과가 없으면 null
 //		System.out.println(dto);
 		
-		
+		//학생정보 한건 추가
+		StudentDTO1 dto = new StudentDTO1("2222222","김철수","물리학과",3.5);
+		int count = mapper.insertStudent(dto);
+		System.out.println("결과 : " + count);
 	}
 
 }

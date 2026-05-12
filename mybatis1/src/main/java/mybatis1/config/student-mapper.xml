@@ -12,4 +12,11 @@
 	<select id="selectForNo" resultType="mybatis1.dto.StudentDTO1">
 		select * from students where student_id = #{id}
 	</select>
+	<insert id="insertStudent">
+		insert into students(student_id, name, department, gpa)
+		values(#{student_id},#{name},#{department},#{gpa})	
+	</insert>
 </mapper>
+
+
+

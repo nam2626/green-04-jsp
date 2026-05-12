@@ -10,4 +10,6 @@ public interface StudentMapper {
 	public List<StudentDTO1> selectForName(String name);
 
 	public StudentDTO1 selectForNo(String no);
+
+	public int insertStudent(StudentDTO1 dto);
 }
