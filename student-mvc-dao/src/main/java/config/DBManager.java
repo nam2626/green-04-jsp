@@ -13,10 +13,14 @@ public class DBManager {
 	
 	private DBManager() {
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			// conn에 DB 접속 정보 생성
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/student_db",
 					"root","12345678");
+			System.out.println("DB 접속 완료");
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}

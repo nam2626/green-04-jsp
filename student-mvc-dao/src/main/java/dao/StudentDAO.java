@@ -32,11 +32,13 @@ public class StudentDAO {
 			// 3. SQL 실행
 			try(ResultSet rs = pstmt.executeQuery()){
 				// 4. 결과를 list에 저장
-				String no = rs.getString(1);
-				String name = rs.getString(2);
-				String majorName = rs.getString(3);
-				double score = rs.getDouble(4);
-				list.add(new StudentVO(no, name, majorName, score));
+				while(rs.next()) {
+					String no = rs.getString(1);
+					String name = rs.getString(2);
+					String majorName = rs.getString(3);
+					double score = rs.getDouble(4);
+					list.add(new StudentVO(no, name, majorName, score));
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
