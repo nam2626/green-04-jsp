@@ -107,5 +107,36 @@ public class StudentDAO {
 
 		return vo;
 	}
+	
+	//학생 정보 수정
+	public int updateStudent(StudentVO vo) {
+		int result = 0;
+
+		String sql = "update students set name=?, department=?, gpa=? "
+				+ "where student_id = ?";
+
+		try (PreparedStatement pstmt = DBManager.getInstance().getConn().prepareStatement(sql)) {
+			// SQL에 데이터 셋팅
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getMajorName());
+			pstmt.setDouble(3, vo.getScore());
+			pstmt.setString(4, vo.getNo());
+			// SQL 실행
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
 
 }
+
+
+
+
+
+
+
+
