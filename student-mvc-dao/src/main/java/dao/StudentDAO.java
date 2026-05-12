@@ -70,6 +70,23 @@ public class StudentDAO {
 		return result;		
 	}
 	
+	public int deleteStudent(String no) {
+		int result = 0;
+		
+		String sql = "delete from students where student_id = ?";
+		
+		try(PreparedStatement pstmt = 
+				DBManager.getInstance().getConn().prepareStatement(sql)){
+			//SQL에 데이터 셋팅
+			pstmt.setString(1, no);
+			//SQL 실행
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }
 
 

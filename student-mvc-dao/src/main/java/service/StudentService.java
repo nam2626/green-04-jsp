@@ -97,14 +97,7 @@ public class StudentService {
 	 * @return 삭제 성공 여부
 	 */
 	public boolean deleteStudentVO(String no) {
-
-		// 삭제할 학생 정보가 있는지? 확인
-		int i = StudentService.getInstance().searchStudentVO(no);
-
-		if (i == -1) 
-			return false;
-		
-		return list.remove(i) != null;
+		return dao.deleteStudent(no) != 0;
 	}
 
 	/**
