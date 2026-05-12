@@ -13,7 +13,7 @@ public class DBManager {
 	private SqlSessionFactory sqlSessionFactory;
 	
 	private DBManager() {
-		String resource = "org/mybatis/example/mybatis-config.xml";
+		String resource = "config/mybatis-config.xml";
 		InputStream inputStream;
 		try {
 			inputStream = Resources.getResourceAsStream(resource);
