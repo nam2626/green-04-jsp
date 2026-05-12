@@ -6,4 +6,10 @@
 	<select id="selectAllStudent" resultType="mybatis1.dto.StudentDTO1">
 		select * from students
 	</select>
+	<select id="selectForName" resultType="mybatis1.dto.StudentDTO1">
+		select * from students where name like concat('%',#{name},'%')
+	</select>
+	<select id="selectForNo" resultType="mybatis1.dto.StudentDTO1">
+		select * from students where student_id = #{id}
+	</select>
 </mapper>

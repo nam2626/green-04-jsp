@@ -12,15 +12,39 @@ public class TestMain {
 		//맵퍼 객체를 생성
 		StudentMapper mapper = DBManager.getInstance()
 				.getSession().getMapper(StudentMapper.class);
+		// 전체 조회
+//		List<StudentDTO1> list = mapper.selectAllStudent();
+//		
+//		for(StudentDTO1 dto : list)
+//			System.out.println(dto);
 		
-		List<StudentDTO1> list = mapper.selectAllStudent();
+//		String name = "재원";
+//		List<StudentDTO1> list = mapper.selectForName(name);
+//		
+//		for(StudentDTO1 dto : list)
+//			System.out.println(dto);
 		
-		for(StudentDTO1 dto : list)
-			System.out.println(dto);
+//		String no = "202299281";
+//		//학번으로 학생정보 조회해서 출력
+//		StudentDTO1 dto = mapper.selectForNo(no);//결과가 없으면 null
+//		System.out.println(dto);
+		
 		
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

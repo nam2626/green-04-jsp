@@ -6,4 +6,8 @@ import mybatis1.dto.StudentDTO1;
 
 public interface StudentMapper {
 	public List<StudentDTO1> selectAllStudent();
+
+	public List<StudentDTO1> selectForName(String name);
+
+	public StudentDTO1 selectForNo(String no);
 }
