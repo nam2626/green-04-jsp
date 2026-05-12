@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- JSTL의 Core 태그를 사용하기 위해 선언합니다. (반복문, 조건문 등을 JSP에서 쓰기 위해) --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>학생 관리 시스템 - 목록</title>
 </head>
 <body>
+	<%-- 상단 메뉴 --%>
 	<a href="./insertView.do">학생정보 추가</a>
 	<a href="./updateView.do">학생정보 수정</a>
 	<hr>
@@ -16,6 +18,7 @@
 		<section>
 			<table>
 				<thead>
+					<%-- 검색창 --%>
 					<tr>
 						<td colspan="5">
 							<form action="./search.do" method="get">
@@ -24,6 +27,7 @@
 							</form>
 						</td>
 					</tr>
+					<%-- 표 제목 --%>
 					<tr>
 						<th>학번</th>
 						<th>이름</th>
@@ -33,7 +37,10 @@
 					</tr>
 				</thead>
 				<tbody>
-				<!-- jstl을 이용해서 request 영역에 저장된 list를 표 형태로 출력 -->
+				<%-- 
+					JSTL의 forEach를 이용해 서버에서 전달받은 학생 리스트(list)를 하나씩 꺼내서 출력합니다. 
+					${requestScope.list}는 컨트롤러가 'list'라는 이름으로 담아둔 데이터를 의미합니다.
+				--%>
 				<c:forEach var="dto" items="${requestScope.list }">
 					<tr>
 						<td>${dto.no }</td>
@@ -41,6 +48,7 @@
 						<td>${dto.majorName }</td>
 						<td>${dto.score }</td>
 						<td>
+							<%-- 특정 학생을 삭제하거나 수정하기 위해 학번(no)을 주소에 실어서 보냅니다. --%>
 							<a href="./delete.do?no=${dto.no }">삭제</a> 
 							/
 							<a href="./updateView.do?no=${dto.no }">수정</a> 

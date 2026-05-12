@@ -11,17 +11,18 @@ import view.ModelAndView;
 import vo.StudentVO;
 
 /**
- * 전체 학생 정보를 조회하여 출력하는 기능을 담당하는 컨트롤러
+ * DB에서 모든 학생 정보를 가져와서 화면에 보여주도록 지시하는 컨트롤러입니다.
  */
 public class StudentAllPrintController implements Controller {
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		// 1. 서비스를 통해 DB에 저장된 모든 학생 목록을 불러옵니다.
 		ArrayList<StudentVO> list = StudentService.getInstance().selectAllStudent();
 		
-		//사용자에게 전달할 데이터를 셋팅
+		// 2. 화면(JSP)에서 사용할 수 있도록 짐꾸러미(request)에 담아둡니다.
 		request.setAttribute("list", list);
 		
-		//이동할 경로 셋팅
+		// 3. 메인 화면(main.jsp)으로 이동하라고 명령합니다.
 		ModelAndView view = new ModelAndView("main", false);		
 
 		return view;
