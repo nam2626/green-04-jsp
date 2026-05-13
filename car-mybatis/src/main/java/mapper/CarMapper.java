@@ -1,5 +1,6 @@
 package mapper;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,8 @@ public interface CarMapper {
 	List<CarDTO> selectBrandCar(String[] arr);
 
 	List<Map<String, Object>> selectBrandModelCount();
+
+	List<CarDTO> selectYearCar(HashMap<String, Integer> map);
 
 }
 

@@ -52,7 +52,15 @@
 	group by 
 		brand
   </select>
-  
+  <select id="selectYearCar" resultType="car">
+  	select 
+  		car_id as carId, brand, model, year, 
+  		mileage, price, registered_at as registeredAt 
+  	from 
+  		cars
+	where
+		year between #{startYear} and #{endYear} 
+  </select>
   
 </mapper>
 

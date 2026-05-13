@@ -1,5 +1,6 @@
 package service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,6 +46,10 @@ public class CarService {
 
 	public List<Map<String, Object>> selectBrandModelCount() {
 		return mapper.selectBrandModelCount();
+	}
+
+	public List<CarDTO> selectYearCar(HashMap<String, Integer> map) {
+		return mapper.selectYearCar(map);
 	}
 }
 

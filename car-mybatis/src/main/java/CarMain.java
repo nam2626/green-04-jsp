@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -37,16 +38,25 @@ public class CarMain {
 //		list.forEach(item -> System.out.println(item));
 		
 		//제조사별 자동차 모델 개수
-		List<Map<String, Object>> list = service.selectBrandModelCount();
-		list.forEach(item ->{
-			System.out.println(item.get("brand_name") 
-					+ " / " + item.get("brand_count"));
-		});
+//		List<Map<String, Object>> list = service.selectBrandModelCount();
+//		list.forEach(item ->{
+//			System.out.println(item.get("brand_name") 
+//					+ " / " + item.get("brand_count"));
+//		});
 		//2022~2025 자동차 데이터 조회
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("startYear", 2022);
+		map.put("endYear", 2025);
 		
+		List<CarDTO> list = service.selectYearCar(map);
+		list.forEach(item -> System.out.println(item));
 	}
 
 }
+
+
+
+
 
 
 
