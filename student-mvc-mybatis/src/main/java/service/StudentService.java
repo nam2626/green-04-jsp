@@ -3,7 +3,10 @@ package service;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import config.DBManager;
 import dao.StudentDAO;
+import dto.StudentDTO;
+import mapper.StudentMapper;
 import vo.StudentVO;
 
 /**
@@ -16,10 +19,10 @@ public class StudentService {
 	private static StudentService instance = new StudentService();
 	
 	// 데이터를 실제로 관리할 DAO 객체
-	private StudentDAO dao;
+	private StudentMapper mapper;
 	
 	private StudentService() {
-		dao = StudentDAO.getInstance();
+		mapper = DBManager.getInstance().getSession().getMapper(StudentMapper.class);
 	}
 
 	public static StudentService getInstance() {
@@ -31,43 +34,43 @@ public class StudentService {
 	/**
 	 * 학번으로 학생 한 명의 정보를 찾아옵니다.
 	 */
-	public StudentVO searchStudentVO2(String no) {
-		return dao.selectStudent(no);
+	public StudentDTO searchStudent(String no) {
+		return mapper.selectForNo(no);
 	}
 
 	/**
 	 * 새로운 학생을 등록합니다.
 	 */
-	public boolean appendStudentVO(StudentVO vo) {
-		return dao.insertStudent(vo) != 0;
+	public boolean appendStudentVO(StudentDTO vo) {
+		return mapper.insertStudent(vo) != 0;
 	}
 
 	/**
 	 * 학번을 기준으로 학생을 삭제합니다.
 	 */
 	public boolean deleteStudentVO(String no) {
-		return dao.deleteStudent(no) != 0;
+		return mapper.deleteStudent(no) != 0;
 	}
 
 	/**
 	 * 이름으로 학생 목록을 검색합니다.
 	 */
 	public ArrayList<StudentVO> searchStudentVOForName(String name) {
-		return dao.selectForNameStudent(name);
+		return mapper.selectForNameStudent(name);
 	}
 
 	/**
 	 * 모든 학생의 목록을 가져옵니다.
 	 */
 	public ArrayList<StudentVO> selectAllStudent() {
-		return dao.selectAllStudent();
+		return mapper.selectAllStudent();
 	}
 
 	/**
 	 * 학생의 정보를 수정합니다.
 	 */
 	public void updateStudent(StudentVO studentVO) {
-		dao.updateStudent(studentVO);		
+		mapper.updateStudent(studentVO);		
 	}
 }
 

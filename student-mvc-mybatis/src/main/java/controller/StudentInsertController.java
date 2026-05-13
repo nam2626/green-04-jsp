@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.util.Scanner;
 
+import dto.StudentDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import service.StudentService;
@@ -23,7 +24,7 @@ public class StudentInsertController implements Controller {
 		System.out.println(no + " , " + name  + " , " + majorName  + " , " + score);
 		// 데이터 처리하는 부분
 		boolean flag = StudentService.getInstance()
-				.appendStudentVO(new StudentVO(no, name, majorName, score));
+				.appendStudentVO(new StudentDTO(no, name, majorName, score));
 		//페이지 이동처리 및 전달할 데이터 셋팅
 		ModelAndView view = new ModelAndView("insert_result", false);
 		
