@@ -34,9 +34,9 @@ public class DispatcherServlet extends HttpServlet {
 		String uri = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String path = uri.substring(contextPath.length()+1);
-		System.out.println(uri);
-		System.out.println(contextPath);
-		System.out.println(path);
+//		System.out.println(uri);
+//		System.out.println(contextPath);
+//		System.out.println(path);
 		//작업 시작
 		Controller controller = HandlerMapping.getInstance().createController(path);
 		
