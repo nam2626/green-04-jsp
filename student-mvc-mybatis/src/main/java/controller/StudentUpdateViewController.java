@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import service.StudentService;
 import view.ModelAndView;
-import vo.StudentVO;
 
 public class StudentUpdateViewController implements Controller {
 

@@ -1,14 +1,12 @@
 package controller;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 import dto.StudentDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import service.StudentService;
 import view.ModelAndView;
-import vo.StudentVO;
 
 /**
  * 사용자로부터 학생 정보를 입력받아 시스템에 등록하는 기능을 담당하는 컨트롤러

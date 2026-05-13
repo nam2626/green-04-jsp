@@ -1,13 +1,10 @@
 package service;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
 
 import config.DBManager;
-import dao.StudentDAO;
 import dto.StudentDTO;
 import mapper.StudentMapper;
-import vo.StudentVO;
 
 /**
  * 학생 관련 비즈니스 로직을 처리하는 서비스 클래스입니다.
@@ -55,22 +52,22 @@ public class StudentService {
 	/**
 	 * 이름으로 학생 목록을 검색합니다.
 	 */
-	public ArrayList<StudentVO> searchStudentVOForName(String name) {
-		return mapper.selectForNameStudent(name);
+	public List<StudentDTO> searchStudentVOForName(String name) {
+		return mapper.selectForName(name);
 	}
 
 	/**
 	 * 모든 학생의 목록을 가져옵니다.
 	 */
-	public ArrayList<StudentVO> selectAllStudent() {
+	public List<StudentDTO> selectAllStudent() {
 		return mapper.selectAllStudent();
 	}
 
 	/**
 	 * 학생의 정보를 수정합니다.
 	 */
-	public void updateStudent(StudentVO studentVO) {
-		mapper.updateStudent(studentVO);		
+	public void updateStudent(StudentDTO dto) {
+		mapper.updateStudent(dto);		
 	}
 }
 
