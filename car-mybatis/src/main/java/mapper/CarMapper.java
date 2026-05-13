@@ -14,4 +14,10 @@ public interface CarMapper {
 
 	int updateCar(CarDTO newCar);
 
+	List<CarDTO> selectBrandCar(String[] arr);
+
 }
+
+
+
+

@@ -29,7 +29,24 @@
     WHERE 
         car_id = #{carId}
   </update>
+  
+  <select id="selectBrandCar" resultType="dto.CarDTO">
+  	select 
+  		car_id as carId, brand, model, year, 
+  		mileage, price, registered_at as registeredAt 
+  	from 
+  		cars
+	where
+		brand in
+		<foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>  	
+  
+  </select>
 </mapper>
+
+
+
 
 
 

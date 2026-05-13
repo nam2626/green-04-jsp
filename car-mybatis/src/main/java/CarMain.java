@@ -1,3 +1,5 @@
+import java.util.List;
+
 import org.apache.ibatis.exceptions.PersistenceException;
 
 import dto.CarDTO;
@@ -23,12 +25,15 @@ public class CarMain {
 //		int result = service.deleteCar("60");
 //		System.out.println("삭제 결과 : " + result);
 		//자동차 데이터 수정
-		CarDTO newCar = new CarDTO("1", "Genesis", "G80", 
-				2022, 15000, 65000000, "2020-05-21 00:00:00");
-		int result = service.updateCar(newCar);
-		System.out.println("수정 결과 : " + result);
+//		CarDTO newCar = new CarDTO("1", "Genesis", "G80", 
+//				2022, 15000, 65000000, "2020-05-21 00:00:00");
+//		int result = service.updateCar(newCar);
+//		System.out.println("수정 결과 : " + result);
 		
-		//자동차 제조사명으로 검색
+		//자동차 제조사명으로 검색(BMW, Honda, Kia)
+		String[] arr = {"BMW", "Honda", "Kia"};
+		List<CarDTO> list = service.selectBrandCar(arr);
+		list.forEach(item -> System.out.println(item));
 		
 		//제조사별 자동차 모델 개수
 		

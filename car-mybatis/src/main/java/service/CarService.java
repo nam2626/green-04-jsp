@@ -37,6 +37,10 @@ public class CarService {
 	public int updateCar(CarDTO newCar) {
 		return mapper.updateCar(newCar);
 	}
+
+	public List<CarDTO> selectBrandCar(String[] arr) {
+		return mapper.selectBrandCar(arr);
+	}
 }
 
 
