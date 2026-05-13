@@ -4,6 +4,9 @@
 
 ## 2. Mybatis 셋팅
 package config;
-DBManger, Mapper, mybatis-config.xml, member-mapper.xml
+DBManger, mybatis-config.xml, member-mapper.xml
+
+package mapper;
+MemberMapper
 
 ## 3. MVC 기본 셋팅
