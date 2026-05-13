@@ -1,6 +1,9 @@
 package service;
 
+import java.util.List;
+
 import config.DBManager;
+import dto.CarDTO;
 import mapper.CarMapper;
 
 public class CarService {
@@ -16,4 +19,14 @@ public class CarService {
 			instance = new CarService();
 		return instance;
 	}
+
+	public List<CarDTO> selectAllCar() {
+		return mapper.selectAllCar();
+	}
 }
+
+
+
+
+
+
