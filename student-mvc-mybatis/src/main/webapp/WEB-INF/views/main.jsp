@@ -36,14 +36,14 @@
 				<!-- jstl을 이용해서 request 영역에 저장된 list를 표 형태로 출력 -->
 				<c:forEach var="dto" items="${requestScope.list }">
 					<tr>
-						<td>${dto.no }</td>
+						<td>${dto.student_id }</td>
 						<td>${dto.name }</td>
-						<td>${dto.majorName }</td>
-						<td>${dto.score }</td>
+						<td>${dto.department }</td>
+						<td>${dto.gpa }</td>
 						<td>
-							<a href="./delete.do?no=${dto.no }">삭제</a> 
+							<a href="./delete.do?no=${dto.student_id }">삭제</a> 
 							/
-							<a href="./updateView.do?no=${dto.no }">수정</a> 
+							<a href="./updateView.do?no=${dto.student_id }">수정</a> 
 						</td>
 					</tr>
 				</c:forEach>

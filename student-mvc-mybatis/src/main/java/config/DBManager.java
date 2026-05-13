@@ -20,7 +20,7 @@ public class DBManager {
 	
 	private DBManager() {
 		// MyBatis 설정 파일의 위치를 알려줍니다.
-		String resource = "mybatis1/config/mybatis-config.xml";
+		String resource = "config/mybatis-config.xml";
 		InputStream inputStream;
 		try {
 			// 설정 파일을 읽어와서 '공장(SqlSessionFactory)'을 짓습니다.
