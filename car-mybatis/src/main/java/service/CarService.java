@@ -2,6 +2,8 @@ package service;
 
 import java.util.List;
 
+import org.apache.ibatis.exceptions.PersistenceException;
+
 import config.DBManager;
 import dto.CarDTO;
 import mapper.CarMapper;
@@ -22,6 +24,10 @@ public class CarService {
 
 	public List<CarDTO> selectAllCar() {
 		return mapper.selectAllCar();
+	}
+
+	public int insertCar(CarDTO newCar) throws PersistenceException{
+		return mapper.insertCar(newCar);
 	}
 }
 

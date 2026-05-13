@@ -8,4 +8,6 @@ public interface CarMapper {
 
 	List<CarDTO> selectAllCar();
 
+	int insertCar(CarDTO newCar);
+
 }

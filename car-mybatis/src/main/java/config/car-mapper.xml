@@ -10,4 +10,13 @@
   	from 
   		cars
   </select>
+  <insert id="insertCar">
+  	INSERT INTO cars (car_id, brand, model, year, mileage, price, registered_at)
+  	values(#{carId}, #{brand}, #{model}, #{year}, #{mileage},#{price},#{registeredAt})
+  </insert>
 </mapper>
+
+
+
+
+
