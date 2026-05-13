@@ -1,6 +1,7 @@
 package mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import dto.CarDTO;
 
@@ -15,6 +16,8 @@ public interface CarMapper {
 	int updateCar(CarDTO newCar);
 
 	List<CarDTO> selectBrandCar(String[] arr);
+
+	List<Map<String, Object>> selectBrandModelCount();
 
 }
 

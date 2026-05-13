@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 
@@ -31,14 +32,26 @@ public class CarMain {
 //		System.out.println("수정 결과 : " + result);
 		
 		//자동차 제조사명으로 검색(BMW, Honda, Kia)
-		String[] arr = {"BMW", "Honda", "Kia"};
-		List<CarDTO> list = service.selectBrandCar(arr);
-		list.forEach(item -> System.out.println(item));
+//		String[] arr = {"BMW", "Honda", "Kia"};
+//		List<CarDTO> list = service.selectBrandCar(arr);
+//		list.forEach(item -> System.out.println(item));
 		
 		//제조사별 자동차 모델 개수
-		
+		List<Map<String, Object>> list = service.selectBrandModelCount();
+		list.forEach(item ->{
+			System.out.println(item.get("brand_name") 
+					+ " / " + item.get("brand_count"));
+		});
 		//2022~2025 자동차 데이터 조회
 		
 	}
 
 }
+
+
+
+
+
+
+
+

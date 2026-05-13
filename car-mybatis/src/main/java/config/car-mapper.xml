@@ -43,6 +43,17 @@
 		</foreach>  	
   
   </select>
+  <select id="selectBrandModelCount" resultType="map">
+  	select 
+		brand as brand_name, 
+	    count(*) as brand_count 
+	from 
+		cars
+	group by 
+		brand
+  </select>
+  
+  
 </mapper>
 
 
