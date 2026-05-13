@@ -10,3 +10,9 @@ package mapper;
 MemberMapper
 
 ## 3. MVC 기본 셋팅
+1. ModelAndView
+2. MemberService - 싱글톤
+3. Controller - 인터페이스
+4. DispatcherServlet
+
+
