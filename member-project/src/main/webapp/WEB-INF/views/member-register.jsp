@@ -5,11 +5,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	window.onload = () => {
+		document.querySelector("#btnCheck").onclick = (e) => {
+			let id = document.querySelector("#id").value;
+			//alert(id); //입력 아이디값 확인
+			
+			fetch('./checkId.do?id='+id)
+			.then(reponse => reponse.json())
+			.then(data => {
+				console.log(data);
+			})
+		}
+	}
+
+</script>
 </head>
 <body>
 	<h2>회원가입</h2>
 	<form action="./register.do" method="post">
-		<input type="text" name="id" placeholder="아이디를 입력해주세요">
+		<input type="text" id="id" name="id" placeholder="아이디를 입력해주세요">
 		<button type="button" id="btnCheck">중복확인</button><br>
 		<div id="idCheckResult"></div>
 		<input type="text" name="passwd" placeholder="암호를 입력해주세요"><br>

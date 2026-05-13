@@ -22,6 +22,12 @@ public class HandlerMapping {
 		case "main.do":
 			controller = new MainController();
 			break;
+		case "registerView.do":
+			controller = new MemberRegisterViewController();
+			break;
+		case "checkId.do":
+			controller = new CheckIdController();
+			break;
 		}
 		return controller;
 	}
