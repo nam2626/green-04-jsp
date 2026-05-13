@@ -10,4 +10,6 @@ public interface CarMapper {
 
 	int insertCar(CarDTO newCar);
 
+	int deleteCar(String string);
+
 }

@@ -14,6 +14,9 @@
   	INSERT INTO cars (car_id, brand, model, year, mileage, price, registered_at)
   	values(#{carId}, #{brand}, #{model}, #{year}, #{mileage},#{price},#{registeredAt})
   </insert>
+  <delete id="deleteCar">
+  	delete from cars where car_id = #{id}
+  </delete>
 </mapper>
 
 

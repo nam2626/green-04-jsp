@@ -29,6 +29,10 @@ public class CarService {
 	public int insertCar(CarDTO newCar) throws PersistenceException{
 		return mapper.insertCar(newCar);
 	}
+
+	public int deleteCar(String string) {
+		return mapper.deleteCar(string);
+	}
 }
 
 
