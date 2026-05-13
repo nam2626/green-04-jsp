@@ -20,9 +20,13 @@ public class CarMain {
 //			System.out.println("아이디값이 중복되었습니다.");
 //		}
 		//자동차 데이터 삭제
-		int result = service.deleteCar("60");
-		System.out.println("삭제 결과 : " + result);
+//		int result = service.deleteCar("60");
+//		System.out.println("삭제 결과 : " + result);
 		//자동차 데이터 수정
+		CarDTO newCar = new CarDTO("1", "Genesis", "G80", 
+				2022, 15000, 65000000, "2020-05-21 00:00:00");
+		int result = service.updateCar(newCar);
+		System.out.println("수정 결과 : " + result);
 		
 		//자동차 제조사명으로 검색
 		

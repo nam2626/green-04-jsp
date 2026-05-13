@@ -33,7 +33,13 @@ public class CarService {
 	public int deleteCar(String string) {
 		return mapper.deleteCar(string);
 	}
+
+	public int updateCar(CarDTO newCar) {
+		return mapper.updateCar(newCar);
+	}
 }
+
+
 
 
 

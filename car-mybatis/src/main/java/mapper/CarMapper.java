@@ -12,4 +12,6 @@ public interface CarMapper {
 
 	int deleteCar(String string);
 
+	int updateCar(CarDTO newCar);
+
 }
