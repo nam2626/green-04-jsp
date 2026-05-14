@@ -31,6 +31,9 @@
 	<nav>
 		<a href="./loginView.do">로그인</a>
 		<a href="./registerView.do">회원 가입</a>
+		<c:if test="${sessionScope.member != null }">
+			<span>${sessionScope.member.nickName }님이 로그인하셨습니다.</span>
+		</c:if>
 	</nav>
 	<hr>
 	<!-- 전체 회원정보 -->
