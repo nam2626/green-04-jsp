@@ -28,6 +28,9 @@ public class HandlerMapping {
 		case "checkId.do":
 			controller = new CheckIdController();
 			break;
+		case "register.do":
+			controller = new RegisterController();
+			break;
 		}
 		return controller;
 	}
