@@ -50,6 +50,10 @@ public class MemberService {
 		
 		return dto;
 	}
+
+	public int deleteMember(String no) {
+		return mapper.deleteMember(no);
+	}
 }
 
 

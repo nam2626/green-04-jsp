@@ -16,6 +16,9 @@
 	<select id="login" resultType="member">
 		select no,username,nickname from board_member where id = #{id} and passwd = sha2(#{passwd},512)
 	</select>
+	<delete id="deleteMember">
+		delete from board_member where no = #{no}
+	</delete>
 </mapper>
 
 

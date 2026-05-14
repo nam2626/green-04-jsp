@@ -15,4 +15,6 @@ public interface MemberMapper {
 
 	MemberDTO login(HashMap<String, String> map);
 
+	int deleteMember(String no);
+
 }
