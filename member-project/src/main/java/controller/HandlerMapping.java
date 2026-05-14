@@ -43,6 +43,9 @@ public class HandlerMapping {
 		case "delete.do":
 			controller = new DeleteController();
 			break;
+		case "search.do":
+			controller = new SearchController();
+			break;
 		}
 		return controller;
 	}
