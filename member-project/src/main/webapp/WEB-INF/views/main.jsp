@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- JSTL의 핵심 기능을 사용하기 위한 태그 선언입니다. --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 관리 - 메인</title>
 <style type="text/css">
 	table{
 		width:800px;
@@ -14,8 +15,7 @@
 		border-collapse: collapse;
 	}
 	td,th{
-	border :1px solid black;
-	
+		border :1px solid black;
 	}
 	.passwd {
 		width: 400px;
@@ -23,64 +23,64 @@
 		overflow: hidden;
 		white-space: nowrap;
 	}
-	
-
 </style>
 <script>
 	window.onload = () => {
-		//btnDelete 클릭했을 때 삭제할 회원번호를 no로 저장한 후에
-		//let no = ?
-		//location.href="./delete.do?no="+no
+		// --- 회원 삭제 버튼 클릭 이벤트 ---
 		document.querySelectorAll('.btnDelete').forEach((item) => {
 			item.addEventListener('click',() => {
+				// 클릭한 버튼이 속한 행의 첫 번째 열(번호)을 가져옵니다.
 				let no = item.parentElement.parentElement.firstElementChild.innerText;
-				console.log(no);
-				location.href="./delete.do?no="+no
+				// 확인 후 삭제 경로로 이동합니다.
+				if(confirm(no + '번 회원을 정말 삭제할까요?')){
+					location.href="./delete.do?no="+no;
+				}
 			});
 		});
-		// 검색 버튼 이벤트 처리
-		document.querySelector('#btnSearch').onclick = async (e) => {
-			// let kind = document.querySelector("#kind").value;
-			// let search = document.querySelector("#search").value;
 
-			// let url = `./search.do?kind=\${kind}&search=\${search}`;
-			// console.log(url);
+		// --- 검색 버튼 클릭 이벤트 (AJAX 사용 예시) ---
+		document.querySelector('#btnSearch').onclick = async (e) => {
 			let btn = e.target;
-			let tags = btn.closest('td'); //클릭한 버튼의 부모태그 선택
-			console.log(tags.querySelectorAll('input,select'));
-			console.log(tags.children);
+			let tags = btn.closest('td'); // 클릭한 버튼이 포함된 td 태그 찾기
 
 			const param = new URLSearchParams();
+			// td 내부의 input과 select 태그들의 값을 파라미터로 만듭니다.
 			tags.querySelectorAll('input,select').forEach(item => {
-				param.append(item.id,item.value);
+				param.append(item.id, item.value);
 			});
-			let url = `./search.do?\${param.toString()}`;
-			console.log(url);
 			
+			let url = `./search.do?\${param.toString()}`;
+			console.log("요청 URL:", url);
+			
+			// 서버로 비동기 요청을 보냅니다.
 			let response = await fetch(url);
 			let data = await response.json();
 			
-			console.log(data);
+			// 서버로부터 받은 JSON 응답을 콘솔에 출력합니다.
+			console.log("서버 응답:", data);
+			alert(data.msg);
 		}
 	}
-
 </script>
 </head>
 <body>
 	<nav>
+		<%-- 세션에 로그인 정보(member)가 없는 경우 --%>
 		<c:if test="${sessionScope.member == null }">
 			<a href="./loginView.do">로그인</a>
 			<a href="./registerView.do">회원 가입</a>
 		</c:if>
+		<%-- 세션에 로그인 정보(member)가 있는 경우 --%>
 		<c:if test="${sessionScope.member != null }">
 			<a href="./loginOut.do">로그아웃</a>
-			<span>${sessionScope.member.nickName }님이 로그인하셨습니다.</span>
+			<span><strong>${sessionScope.member.nickName }</strong>님이 로그인하셨습니다.</span>
 		</c:if>
 	</nav>
 	<hr>
-	<!-- 전체 회원정보 -->
+	
 	<table>
 		<thead>
+			<!-- 검색 영역 -->
 			<tr>
 				<td colspan="6">
 					<select id="kind">
@@ -92,17 +92,18 @@
 					<button id="btnSearch">검색</button>
 				</td>
 			</tr>
+			<!-- 테이블 제목 -->
 			<tr>
 				<th>no</th>
 				<th>id</th>
-				<th>passwd</th>
+				<th>passwd (암호화됨)</th>
 				<th>userName</th>
 				<th>nickName</th>
 				<th>비고</th>
 			</tr>		
-			
 		</thead>
 		<tbody id="list_area">
+			<%-- 컨트롤러에서 보낸 'list'를 순회하며 회원 정보를 출력합니다. --%>
 			<c:forEach items="${list }" var="member">
 				<tr>
 					<td>${member.no }</td>
@@ -117,13 +118,3 @@
 	</table>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
