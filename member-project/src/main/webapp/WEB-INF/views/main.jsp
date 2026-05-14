@@ -38,6 +38,30 @@
 				location.href="./delete.do?no="+no
 			});
 		});
+		// 검색 버튼 이벤트 처리
+		document.querySelector('#btnSearch').onclick = async (e) => {
+			// let kind = document.querySelector("#kind").value;
+			// let search = document.querySelector("#search").value;
+
+			// let url = `./search.do?kind=\${kind}&search=\${search}`;
+			// console.log(url);
+			let btn = e.target;
+			let tags = btn.closest('td'); //클릭한 버튼의 부모태그 선택
+			console.log(tags.querySelectorAll('input,select'));
+			console.log(tags.children);
+
+			const param = new URLSearchParams();
+			tags.querySelectorAll('input,select').forEach(item => {
+				param.append(item.id,item.value);
+			});
+			let url = `./search.do?\${param.toString()}`;
+			console.log(url);
+			
+			let response = await fetch(url);
+			let data = await response.json();
+			
+			console.log(data);
+		}
 	}
 
 </script>
@@ -58,14 +82,6 @@
 	<table>
 		<thead>
 			<tr>
-				<th>no</th>
-				<th>id</th>
-				<th>passwd</th>
-				<th>userName</th>
-				<th>nickName</th>
-				<th>비고</th>
-			</tr>		
-			<tr>
 				<td colspan="6">
 					<select id="kind">
 						<option value="id">아이디</option>
@@ -76,6 +92,15 @@
 					<button id="btnSearch">검색</button>
 				</td>
 			</tr>
+			<tr>
+				<th>no</th>
+				<th>id</th>
+				<th>passwd</th>
+				<th>userName</th>
+				<th>nickName</th>
+				<th>비고</th>
+			</tr>		
+			
 		</thead>
 		<tbody id="list_area">
 			<c:forEach items="${list }" var="member">
