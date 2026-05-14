@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import dto.MemberDTO;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,7 +23,13 @@ public class RegisterController implements Controller {
 				new MemberDTO(0, id, passwd, name, nick));
 		//결과를 받아서 페이지 이동
 		if(result == 0) {
+			response.setContentType("text/html;charset=utf-8");
 			//실패하면 이전페이지
+			PrintWriter pw = response.getWriter();
+			pw.println("<script>");
+			pw.println("alert('회원가입에 실패 하셨습니다.\\n입력하신 정보를 확인해 주세요');");
+			pw.println("history.back();");
+			pw.println("</script>");
 			
 			return null;
 		}else {
