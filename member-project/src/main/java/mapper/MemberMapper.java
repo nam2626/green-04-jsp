@@ -10,4 +10,6 @@ public interface MemberMapper {
 
 	MemberDTO selectMemberById(String id);
 
+	int insertMember(MemberDTO memberDTO);
+
 }

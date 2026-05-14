@@ -27,6 +27,18 @@ public class MemberService {
 	public MemberDTO selectMemberById(String id) {
 		return mapper.selectMemberById(id);
 	}
+
+	public int insertMember(MemberDTO memberDTO) {
+		int result = 0;
+		
+		try {
+			result = mapper.insertMember(memberDTO);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }
 
 
