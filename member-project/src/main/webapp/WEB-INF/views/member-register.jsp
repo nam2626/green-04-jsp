@@ -6,6 +6,24 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
+	function checkField(){
+		let result = true;
+		//아이디 중복 여부
+		let id = document.querySelector("#id").value;
+		fetch('./checkId.do?id='+id)
+		.then(reponse => reponse.json())
+		.then(data => {
+			if(data.result == 0)
+				result = false;
+		});
+		//각 항목을 전부 입력했는지
+		let input = document.querySelectorAll("input");
+		input.forEach(item => {	
+			if(item.value.trim() == '')
+				result = false;
+		});
+		return result;
+	}
 	window.onload = () => {
 		document.querySelector("#btnCheck").onclick = (e) => {
 			let id = document.querySelector("#id").value;
