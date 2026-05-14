@@ -23,6 +23,10 @@ public class MemberService {
 	public List<MemberDTO> selectAllMember() {
 		return mapper.selectAllMember();
 	}
+
+	public MemberDTO selectMemberById(String id) {
+		return mapper.selectMemberById(id);
+	}
 }
 
 

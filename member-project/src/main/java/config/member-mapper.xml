@@ -6,5 +6,7 @@
 	<select id="selectAllMember" resultType="member">
 		select * from board_member
 	</select>
-	
+	<select id="selectMemberById" resultType="member">
+		select * from board_member id = #{id}
+	</select>
 </mapper>

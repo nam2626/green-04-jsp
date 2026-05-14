@@ -8,4 +8,6 @@ public interface MemberMapper {
 
 	List<MemberDTO> selectAllMember();
 
+	MemberDTO selectMemberById(String id);
+
 }
