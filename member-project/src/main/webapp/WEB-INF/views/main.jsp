@@ -26,6 +26,14 @@
 	
 
 </style>
+<script>
+	window.onload = () => {
+		//btnDelete 클릭했을 때 삭제할 회원번호를 no로 저장한 후에
+		//let no = ?
+		//location.href="./delete.do?no="+no
+	}
+
+</script>
 </head>
 <body>
 	<nav>
@@ -48,6 +56,7 @@
 				<th>passwd</th>
 				<th>userName</th>
 				<th>nickName</th>
+				<th>비고</th>
 			</tr>		
 		</thead>
 		<tbody>
@@ -58,6 +67,7 @@
 					<td class="passwd">${member.passwd }</td>
 					<td>${member.userName }</td>
 					<td>${member.nickName }</td>
+					<td><button class="btnDelete">삭제</button></td>
 				</tr>
 			</c:forEach>
 		</tbody>
