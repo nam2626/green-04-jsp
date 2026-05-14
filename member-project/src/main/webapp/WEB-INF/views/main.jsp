@@ -31,6 +31,13 @@
 		//btnDelete 클릭했을 때 삭제할 회원번호를 no로 저장한 후에
 		//let no = ?
 		//location.href="./delete.do?no="+no
+		document.querySelectorAll('.btnDelete').forEach((item) => {
+			item.addEventListener('click',() => {
+				let no = item.parentElement.parentElement.firstElementChild.innerText;
+				console.log(no);
+				location.href="./delete.do?no="+no
+			});
+		});
 	}
 
 </script>
