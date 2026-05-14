@@ -1,5 +1,6 @@
 package mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import dto.MemberDTO;
@@ -11,5 +12,7 @@ public interface MemberMapper {
 	MemberDTO selectMemberById(String id);
 
 	int insertMember(MemberDTO memberDTO);
+
+	MemberDTO login(HashMap<String, String> map);
 
 }

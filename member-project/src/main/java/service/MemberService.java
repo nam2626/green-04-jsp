@@ -1,5 +1,6 @@
 package service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import config.DBManager;
@@ -38,6 +39,16 @@ public class MemberService {
 		}
 		
 		return result;
+	}
+
+	public MemberDTO login(String id, String passwd) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("passwd", passwd);
+		
+		MemberDTO dto = mapper.login(map);
+		
+		return dto;
 	}
 }
 
