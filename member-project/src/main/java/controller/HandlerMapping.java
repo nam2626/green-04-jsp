@@ -31,6 +31,9 @@ public class HandlerMapping {
 		case "register.do":
 			controller = new RegisterController();
 			break;
+		case "loginView.do":
+			controller = new LoginViewController();
+			break;
 		case "login.do":
 			controller = new LoginController();
 			break;
