@@ -14,7 +14,7 @@
 		values(#{id},sha2(#{passwd},512),#{userName},#{nickName})
 	</insert>
 	<select id="login" resultType="member">
-		select * from board_member where id = #{id} and passwd = sha2(#{passwd},512)
+		select no,username,nickname from board_member where id = #{id} and passwd = sha2(#{passwd},512)
 	</select>
 </mapper>
 

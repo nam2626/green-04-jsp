@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import dto.MemberDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import service.MemberService;
 import view.ModelAndView;
 
@@ -28,8 +29,14 @@ public class LoginController implements Controller {
 			
 			return null;
 		}else {
+			HttpSession session = request.getSession();
+			session.setAttribute("member", member);
 			return new ModelAndView("./main.do", true);
 		}
 	}
 
 }
+
+
+
+
