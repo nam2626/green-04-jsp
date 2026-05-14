@@ -65,8 +65,19 @@
 				<th>nickName</th>
 				<th>비고</th>
 			</tr>		
+			<tr>
+				<td colspan="6">
+					<select id="kind">
+						<option value="id">아이디</option>
+						<option value="username">이름</option>
+						<option value="nickname">닉네임</option>
+					</select>					
+					<input type="text" id="search" placeholder="검색어를 입력하세요">
+					<button id="btnSearch">검색</button>
+				</td>
+			</tr>
 		</thead>
-		<tbody>
+		<tbody id="list_area">
 			<c:forEach items="${list }" var="member">
 				<tr>
 					<td>${member.no }</td>
