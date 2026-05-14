@@ -14,7 +14,17 @@
 			fetch('./checkId.do?id='+id)
 			.then(reponse => reponse.json())
 			.then(data => {
+				// 서버에서 받은 데이터를 확인 후 처리
 				console.log(data);
+				let checkArea = document.querySelector("#idCheckResult");
+				if(data.result == 1){
+					checkArea.style.fontWeight = 'bold';
+					checkArea.style.color = 'blue';
+				}else{
+					checkArea.style.fontWeight = 'bold';
+					checkArea.style.color = 'red';
+				}
+				checkArea.innerHTML = data.msg;
 			})
 		}
 	}
