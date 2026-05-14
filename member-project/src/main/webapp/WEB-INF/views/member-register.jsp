@@ -45,6 +45,18 @@
 				checkArea.innerHTML = data.msg;
 			})
 		}
+		//form submit 이벤트 처리
+		document.querySelector('form').onsubmit = (e) => {
+			alert('submit 이벤트 발생');
+			// 태그는 기본적으로 설정된 이벤트
+			// 하이퍼링크는 페이지 이동
+			// submit 버튼 누르면 해당 경로로 데이터 전송
+			// preventDefault는 그 기본적으로 설정되어 있는 이벤트를 무력화 시킴
+			// e.preventDefault();
+			return false;
+		}
+
+
 	}
 
 </script>
