@@ -25,7 +25,7 @@
 	}
 </style>
 <script>
-	window.onload = () => {
+	function addDeleteEvent(){
 		// --- 회원 삭제 버튼 클릭 이벤트 ---
 		document.querySelectorAll('.btnDelete').forEach((item) => {
 			item.addEventListener('click',() => {
@@ -37,6 +37,10 @@
 				}
 			});
 		});
+	}
+
+	window.onload = () => {
+		addDeleteEvent();
 
 		// --- 검색 버튼 클릭 이벤트 (AJAX 사용 예시) ---
 		document.querySelector('#btnSearch').onclick = async (e) => {
@@ -77,6 +81,9 @@
 				tag += '</tr>';
 			})
 			area.innerHTML = tag;
+			
+			addDeleteEvent();
+			
 		}
 	}
 </script>
