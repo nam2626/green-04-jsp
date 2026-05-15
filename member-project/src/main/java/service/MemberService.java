@@ -79,6 +79,10 @@ public class MemberService {
 		map.put("search", search);
 		return mapper.searchMembers(map);
 	}
+
+	public MemberDTO selectMemberByNo(String no) {
+		return mapper.selectMemberByNo(no);
+	}
 }
 
 

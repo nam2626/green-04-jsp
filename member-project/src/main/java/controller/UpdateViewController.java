@@ -18,7 +18,7 @@ public class UpdateViewController implements Controller {
 		
 		request.setAttribute("dto", dto);
 		
-		return new ModelAndView("member_update", false);
+		return new ModelAndView("member-update", false);
 	}
 
 }

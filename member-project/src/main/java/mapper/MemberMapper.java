@@ -28,4 +28,6 @@ public interface MemberMapper {
 
 	List<MemberDTO> searchMembers(HashMap<String, String> map);
 
+	MemberDTO selectMemberByNo(String no);
+
 }

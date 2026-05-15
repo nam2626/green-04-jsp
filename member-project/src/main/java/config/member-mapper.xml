@@ -17,6 +17,10 @@
 	<select id="selectMemberById" resultType="member">
 		select * from board_member where id = #{id}
 	</select>
+	
+	<select id="selectMemberByNo" resultType="member">
+		select * from board_member where no = #{no}
+	</select>
 
 	<!-- 회원 가입 쿼리입니다. 비밀번호는 MySQL의 sha2 함수를 이용해 512비트로 암호화하여 저장합니다. -->
 	<insert id="insertMember">
