@@ -20,9 +20,23 @@
 <script>
 	window.onload = () => {
 		let file_area = document.querySelector('.file_drop_area');
+		let file = document.querySelector('#file');
+		
 		file_area.ondrop = (e) => {
 			e.preventDefault();
 			console.log(e);
+			const data = e.dataTransfer;
+			console.log(data);
+			console.log(data.files);
+			
+			file.files = data.files;
+			
+			const file_list_view = document.querySelector(".file_list_view");
+			file_list_view.innerHTML = '';
+			for(i=0;i<data.files.length;i++){
+				console.log(data.files[i].name);
+				file_list_view.innerHTML += data.files[i].name + "<br>"
+			}
 		}
 		
 		file_area.ondragover = (e) => {
