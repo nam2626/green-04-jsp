@@ -28,6 +28,7 @@
 		
 		file_area.ondrop = (e) => {
 			e.preventDefault();
+			e.target.classList.remove('active');
 			console.log(e);
 			const data = e.dataTransfer;
 			console.log(data);
@@ -48,9 +49,11 @@
 		}
 		file_area.ondragenter = (e) => {
 			e.preventDefault();
+			e.target.classList.add('active');
 		}
 		file_area.ondragleave = (e) => {
 			e.preventDefault();
+			e.target.classList.remove('active');
 		}
 		
 		
