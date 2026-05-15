@@ -2,16 +2,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>파일 업로드 테스트</title>
 </head>
 <body>
-	<h2>파일 업로드 테스트</h2>
+	<h2>파일 업로드 테스트 (기본 폼 방식)</h2>
+	<!-- 
+		[파일 전송 폼 설정]
+		- action: 데이터를 처리할 서버 측 서블릿 주소입니다.
+		- method: 파일은 용량이 크기 때문에 반드시 'post' 방식으로 보내야 합니다.
+		- enctype="multipart/form-data": 파일을 전송할 때 반드시 필요한 설정입니다. 
+		  문자열 데이터와 바이너리(파일) 데이터를 섞어서 보낸다는 뜻입니다.
+	-->
 	<form action="./fileUpload.do" method="post" enctype="multipart/form-data">	
-		내용 : <input type="text" name="txt"><br>
-		파일 : <input type="file" name="file1"><br>
-		파일 : <input type="file" name="file2"><br>
-		파일 : <input type="file" name="file3"><br>
-		<button>파일 업로드</button>
+		일반 텍스트 내용 : <input type="text" name="txt"><br>
+		<!-- type="file": 브라우저의 파일 선택 창을 열어주는 입력 태그입니다. -->
+		파일 선택 1 : <input type="file" name="file1"><br>
+		파일 선택 2 : <input type="file" name="file2"><br>
+		파일 선택 3 : <input type="file" name="file3"><br>
+		<button>서버로 파일 전송하기</button>
 	</form>
 </body>
 </html>

@@ -2,9 +2,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>파일 다운로드 테스트</title>
 </head>
 <body>
-	<a href="./fileDown.do?bno=30&fno=1">파일 다운로드</a>
+	<h2>파일 다운로드</h2>
+	<!-- 
+		[파일 다운로드 링크]
+		- href: 다운로드를 처리해줄 서블릿 주소와 필요한 파라미터들을 함께 보냅니다.
+		- bno, fno 등은 서버에서 어떤 파일을 보내줄지 결정하는 식별자로 사용됩니다.
+	-->
+	<a href="./fileDown.do?bno=30&fno=1">서버에서 파일 내려받기</a>
 </body>
 </html>

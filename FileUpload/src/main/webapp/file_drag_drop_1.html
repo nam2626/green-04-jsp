@@ -2,74 +2,105 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>드래그 앤 드롭 파일 업로드</title>
 <style>
+/* 드래그 앤 드롭 영역 스타일 */
 .file_drop_area {
-	width: 200px;
-	height: 200px;
-	border: 2px dashed #e9e9e9;
+	width: 300px;
+	height: 300px;
+	border: 3px dashed #ccc;
 	background-image: url('file.png');
 	background-repeat: no-repeat;
 	background-position: center;
+	transition: 0.3s;
 }
 
+/* 실제 파일 입력 칸은 숨겨둡니다. (드래그 앤 드롭으로 값을 채울 예정) */
 #file {
 	display: none;
 }
-.active{
-		box-shadow: 0px 0px 3px 5px red;
-		background-color: rgba(255,0,0,0.5);
-	}
+
+/* 드래그한 파일이 영역 위로 올라왔을 때 적용할 스타일 */
+.active {
+	border-color: #007bff;
+	background-color: rgba(0, 123, 255, 0.1);
+	transform: scale(1.02);
+}
 </style>
 <script>
 	window.onload = () => {
-		let file_area = document.querySelector('.file_drop_area');
-		let file = document.querySelector('#file');
+		const file_area = document.querySelector('.file_drop_area');
+		const file_input = document.querySelector('#file');
+		const file_list_view = document.querySelector(".file_list_view");
 		
+		/**
+		 * [파일을 떨어뜨렸을 때(drop)]
+		 * 실제로 파일 데이터를 가져와서 input 태그에 넣어주는 핵심 이벤트입니다.
+		 */
 		file_area.ondrop = (e) => {
-			e.preventDefault();
-			e.target.classList.remove('active');
-			console.log(e);
+			e.preventDefault(); // 브라우저가 파일을 여는 기본 동작을 막습니다.
+			e.target.classList.remove('active'); // 강조 효과 제거
+			
+			// e.dataTransfer: 드래그 중인 데이터를 담고 있는 객체
 			const data = e.dataTransfer;
-			console.log(data);
-			console.log(data.files);
+			console.log("드롭된 파일들:", data.files);
 			
-			file.files = data.files;
+			// 1. 드롭된 파일 목록을 실제 <input type="file"> 요소의 파일 목록으로 복사합니다.
+			// 이를 통해 폼 전송 시 드래그한 파일들이 서버로 전송됩니다.
+			file_input.files = data.files;
 			
-			const file_list_view = document.querySelector(".file_list_view");
-			file_list_view.innerHTML = '';
-			for(i=0;i<data.files.length;i++){
-				console.log(data.files[i].name);
-				file_list_view.innerHTML += data.files[i].name + "<br>"
+			// 2. 화면에 선택된 파일 이름들을 보여줍니다.
+			file_list_view.innerHTML = '<strong>선택된 파일 목록:</strong><br>';
+			for(let i=0; i < data.files.length; i++){
+				file_list_view.innerHTML += `- \${data.files[i].name}<br>`;
 			}
 		}
 		
+		/**
+		 * [파일이 영역 위에서 움직일 때(dragover)]
+		 * 이 이벤트에서 preventDefault()를 호출해야만 'drop' 이벤트가 발생할 수 있습니다.
+		 */
 		file_area.ondragover = (e) => {
 			e.preventDefault();
 		}
+		
+		/**
+		 * [파일이 영역 안으로 들어왔을 때(dragenter)]
+		 * 영역을 강조하는 스타일(active)을 추가합니다.
+		 */
 		file_area.ondragenter = (e) => {
 			e.preventDefault();
 			e.target.classList.add('active');
 		}
+		
+		/**
+		 * [파일이 영역 밖으로 나갔을 때(dragleave)]
+		 * 강조 효과를 제거합니다.
+		 */
 		file_area.ondragleave = (e) => {
 			e.preventDefault();
 			e.target.classList.remove('active');
 		}
-		
-		
 	}
-
 </script>
 </head>
 <body>
-	<form action="./fileUpload.do" method="post"
-		enctype="multipart/form-data">
+	<h2>드래그 앤 드롭 파일 업로드</h2>
+	<p>아래 박스 안으로 파일을 끌어다 놓으세요.</p>
+	
+	<form action="./fileUpload.do" method="post" enctype="multipart/form-data">
+		<!-- 드래그 앤 드롭을 받는 영역 -->
 		<div class="file_drop_area"></div>
-		<input type="file" name="file" id="file">
-		<button>전송</button>
+		
+		<!-- 실제로 파일이 담길 숨겨진 input 태그 -->
+		<input type="file" name="file" id="file" multiple>
+		
+		<br>
+		<button>서버로 전송하기</button>
 	</form>
 
 	<hr>
+	<!-- 선택된 파일 명을 보여줄 영역 -->
 	<div class="file_list_view"></div>
 </body>
 </html>

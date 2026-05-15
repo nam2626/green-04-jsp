@@ -2,58 +2,71 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>드래그 앤 드롭 + AJAX 업로드</title>
 <style>
+/* 드래그 앤 드롭 영역 스타일 */
 .file_drop_area {
-	width: 200px;
-	height: 200px;
-	border: 2px dashed #e9e9e9;
+	width: 300px;
+	height: 300px;
+	border: 3px dashed #ccc;
 	background-image: url('file.png');
 	background-repeat: no-repeat;
 	background-position: center;
+	transition: 0.3s;
 }
 
+/* 실제 파일 입력 칸은 숨겨둡니다. */
 #file {
 	display: none;
 }
-.active{
-		box-shadow: 0px 0px 3px 5px red;
-		background-color: rgba(255,0,0,0.5);
-	}
+
+/* 드래그 시 강조 효과 */
+.active {
+	border-color: #28a745;
+	background-color: rgba(40, 167, 69, 0.1);
+	transform: scale(1.02);
+}
 </style>
 <script>
 	window.onload = () => {
-		let file_area = document.querySelector('.file_drop_area');
-		let file = document.querySelector('#file');
+		const file_area = document.querySelector('.file_drop_area');
+		const file_list_view = document.querySelector(".file_list_view");
 		
+		/**
+		 * [파일을 떨어뜨렸을 때(drop)]
+		 * 파일을 감지하자마자 서버로 즉시 AJAX 전송을 수행합니다.
+		 */
 		file_area.ondrop = (e) => {
 			e.preventDefault();
 			e.target.classList.remove('active');
-			console.log(e);
+			
 			const data = e.dataTransfer;
-			console.log(data);
-			console.log(data.files);
+			const files = data.files;
 			
-			file.files = data.files;
-			
-			const file_list_view = document.querySelector(".file_list_view");
-			file_list_view.innerHTML = '';
+			// 1. 서버로 보낼 데이터를 담을 FormData 객체 생성
 			const formData = new FormData();
+			
+			file_list_view.innerHTML = '<strong>업로드 중...</strong><br>';
 
-			for(i=0;i<data.files.length;i++){
-				console.log(data.files[i].name);
-				formData.append('file',data.files[i]);
-				file_list_view.innerHTML += data.files[i].name + "<br>"
+			// 2. 드롭된 모든 파일들을 FormData에 하나씩 추가합니다.
+			for(let i=0; i < files.length; i++){
+				console.log("업로드 준비:", files[i].name);
+				formData.append('file', files[i]); // 'file'이라는 이름으로 실제 파일 객체 추가
+				file_list_view.innerHTML += `- \${files[i].name}<br>`;
 			}
 			
-			//ajax로 전송
+			// 3. fetch API를 사용해 비동기 전송을 시작합니다.
 			fetch('./fileUpload.do',{
 				method : 'POST',
 				body : formData
-			}).then(response => response.json())
-			.then(data =>{
-				console.log("success : ",data);
-			})
+			}).then(response => response.text())
+			.then(result =>{
+				console.log("서버 응답:", result);
+				file_list_view.innerHTML += '<br><strong>업로드 성공!</strong>';
+			}).catch(error => {
+				console.error("업로드 실패:", error);
+				alert("업로드 중 오류가 발생했습니다.");
+			});
 		}
 		
 		file_area.ondragover = (e) => {
@@ -67,16 +80,17 @@
 			e.preventDefault();
 			e.target.classList.remove('active');
 		}
-		
-		
 	}
-
 </script>
 </head>
 <body>
-		<div class="file_drop_area"></div>
-		<input type="file" name="file" id="file">
-		<button>전송</button>
+	<h2>실시간 드래그 앤 드롭 업로드</h2>
+	<p>파일을 박스에 넣으면 즉시 서버로 전송됩니다.</p>
+	
+	<div class="file_drop_area"></div>
+	
+	<!-- AJAX 전송이므로 별도의 <form> 태그 없이도 가능합니다. -->
+	<input type="file" name="file" id="file" multiple>
 
 	<hr>
 	<div class="file_list_view"></div>
