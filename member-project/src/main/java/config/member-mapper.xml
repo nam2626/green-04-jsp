@@ -33,5 +33,20 @@
 	<delete id="deleteMember">
 		delete from board_member where no = #{no}
 	</delete>
+	
+	<select id="searchMembers" resultType="member">
+		<!-- kind에 있는 컬럼명으로 search 값을 이용해서 부분일치 검색  -->
+		select * from board_member where ${kind} like concat('%',#{search},'%')
+	</select>
 
 </mapper>
+
+
+
+
+
+
+
+
+
+

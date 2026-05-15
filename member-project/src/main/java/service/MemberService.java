@@ -74,6 +74,19 @@ public class MemberService {
 	}
 
 	public List<MemberDTO> searchMembers(String kind, String search) {
-		return null;
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("kind", kind);
+		map.put("search", search);
+		return mapper.searchMembers(map);
 	}
 }
+
+
+
+
+
+
+
+
+
+

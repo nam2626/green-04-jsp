@@ -26,4 +26,6 @@ public interface MemberMapper {
 	/** 회원 번호로 회원 삭제 */
 	int deleteMember(String no);
 
+	List<MemberDTO> searchMembers(HashMap<String, String> map);
+
 }
