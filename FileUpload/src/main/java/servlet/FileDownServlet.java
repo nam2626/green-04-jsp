@@ -33,7 +33,7 @@ public class FileDownServlet extends HttpServlet {
 		int bno = Integer.parseInt(request.getParameter("bno"));
 		int fno = Integer.parseInt(request.getParameter("fno"));
 		// ... 차후에 테이블에서 전송할 파일 경로를 받아옴
-		String path = "c:\\fileupload\\모바일티켓.JPG";
+		String path = "c:\\fileupload\\car.csv";
 		
 		File file = new File(path);
 		response.setHeader("Content-Disposition",
