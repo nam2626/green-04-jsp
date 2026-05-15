@@ -60,11 +60,23 @@
 			console.log("서버 응답:", data);
 			//alert(data.msg);
 			
+			
+			const area = document.querySelector("#list_area");
+			area.innerHTML = '';
 			//data를 tbody에 출력
+			let tag = '';
 			data.list.forEach(item => {
-				//태그 조립하고 화면에 출력 #list_area
-				
+				//태그 조립하고 화면에 출력 
+				tag += '<tr>';
+				tag += `<td>\${item.no}</td>`;
+				tag += `<td>\${item.id}</td>`;
+				tag += `<td class="passwd">\${item.passwd}</td>`;
+				tag += `<td>\${item.userName}</td>`;
+				tag += `<td>\${item.nickName}</td>`;
+				tag += `<td><button class="btnDelete">삭제</button></td>`;
+				tag += '</tr>';
 			})
+			area.innerHTML = tag;
 		}
 	}
 </script>
