@@ -136,7 +136,10 @@
 					<td class="passwd">${member.passwd }</td>
 					<td>${member.userName }</td>
 					<td>${member.nickName }</td>
-					<td><button class="btnDelete">삭제</button></td>
+					<td>
+						<button class="btnDelete">삭제</button>
+						<a class="btnUpdate" href="./updateView.do?no=${member.no }">수정</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
