@@ -1,6 +1,7 @@
 package servlet;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import java.util.Iterator;
  * Servlet implementation class FileUploadServlet
  */
 @WebServlet("/fileUpload.do")
+@MultipartConfig(maxRequestSize = 1024*1024*50 ,maxFileSize = 1024*1024*5)
 public class FileUploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -44,10 +46,16 @@ public class FileUploadServlet extends HttpServlet {
 		
 		while(it.hasNext()) {
 			Part p = it.next();
-			System.out.println(p.getName());
-			System.out.println(p.getSize());
-			System.out.println(p.getSubmittedFileName());
-			
+			if(p.getSubmittedFileName() != null && !p.getSubmittedFileName().isEmpty()) {
+				System.out.println(p.getName());
+				System.out.println(p.getSize());
+				System.out.println(p.getSubmittedFileName());
+				//파일 쓰기
+				p.write(root.getAbsolutePath() + "\\" + p.getSubmittedFileName());
+			}else {
+				//받은 내용이 파일이 아닐때
+				System.out.println(p.getName() + " / " + request.getParameter(p.getName()) );
+			}
 		}
 	
 	}
