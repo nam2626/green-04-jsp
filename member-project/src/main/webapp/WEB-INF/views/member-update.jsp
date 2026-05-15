@@ -45,10 +45,10 @@
 	<h2>회원정보수정</h2>
 	<form action="./update.do" method="post">
 		<input type="hidden" name="no" value="${dto.no }"> 
-		<input type="text" id="id" readonly value="${dto.id }">
-		<input type="text" name="passwd" placeholder="암호를 입력해주세요"><br>
-		<input type="text" name="name" placeholder="이름을 입력해주세요" value="${dto.userName }"><br>
-		<input type="text" name="nick" placeholder="닉네임 입력해주세요"value=" ${dto.nickName }"><br>
+		아이디 : <input type="text" id="id" readonly value="${dto.id }"><br>
+		암호 : <input type="text" name="passwd" placeholder="암호를 입력해주세요"><br>
+		이름 : <input type="text" name="name" placeholder="이름을 입력해주세요" value="${dto.userName }"><br>
+		닉네임 : <input type="text" name="nick" placeholder="닉네임 입력해주세요"value=" ${dto.nickName }"><br>
 		
 		<button>수정</button>
 		<button type="button" id="btnCancel">취소</button>

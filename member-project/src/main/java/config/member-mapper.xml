@@ -27,6 +27,18 @@
 		insert into board_member(id,passwd,username,nickname)
 		values(#{id},sha2(#{passwd},512),#{userName},#{nickName})
 	</insert>
+	
+	<update id="updateMember">
+		update 
+			board_member 
+		set 
+			passwd=sha2(#{passwd},512),
+			username=#{userName},
+			nickname=#{nickName}
+		where
+			no = #{no}
+		
+	</update>
 
 	<!-- 로그인 확인 쿼리입니다. 아이디와 암호화된 비밀번호가 모두 일치하는 행을 찾습니다. -->
 	<select id="login" resultType="member">

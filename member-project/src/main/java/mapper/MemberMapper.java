@@ -30,4 +30,6 @@ public interface MemberMapper {
 
 	MemberDTO selectMemberByNo(String no);
 
+	int updateMember(MemberDTO memberDTO);
+
 }

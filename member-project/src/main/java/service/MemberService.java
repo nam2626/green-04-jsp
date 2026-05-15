@@ -83,6 +83,10 @@ public class MemberService {
 	public MemberDTO selectMemberByNo(String no) {
 		return mapper.selectMemberByNo(no);
 	}
+
+	public int updateMember(MemberDTO memberDTO) {
+		return mapper.updateMember(memberDTO);
+	}
 }
 
 
