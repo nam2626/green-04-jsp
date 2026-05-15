@@ -2,11 +2,14 @@ package controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 import org.json.JSONObject;
 
+import dto.MemberDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import service.MemberService;
 import view.ModelAndView;
 
 /**
@@ -22,7 +25,13 @@ public class SearchController implements Controller {
 		
 		// 2. 결과 메시지를 담을 Map 객체를 생성합니다.
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("msg", "테스트 메세지: 검색 조건=" + kind + ", 검색어=" + search);
+		
+		List<MemberDTO> list = MemberService.getInstance().searchMembers(kind, search);	
+		
+		map.put("msg", "검색 완료");
+		map.put("kind", kind);
+		map.put("search", search);
+		map.put("list", list);
 		
 		// 3. Map을 JSON 객체로 변환하여 응답 본문에 씁니다.
 		JSONObject json = new JSONObject(map);

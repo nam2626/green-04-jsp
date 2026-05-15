@@ -72,4 +72,8 @@ public class MemberService {
 	public int deleteMember(String no) {
 		return mapper.deleteMember(no);
 	}
+
+	public List<MemberDTO> searchMembers(String kind, String search) {
+		return null;
+	}
 }
