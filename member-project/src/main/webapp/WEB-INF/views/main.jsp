@@ -58,7 +58,13 @@
 			
 			// 서버로부터 받은 JSON 응답을 콘솔에 출력합니다.
 			console.log("서버 응답:", data);
-			alert(data.msg);
+			//alert(data.msg);
+			
+			//data를 tbody에 출력
+			data.list.forEach(item => {
+				//태그 조립하고 화면에 출력 #list_area
+				
+			})
 		}
 	}
 </script>
