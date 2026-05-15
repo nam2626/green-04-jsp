@@ -15,7 +15,7 @@
 			const formData = new FormData();
 			
 			fileList.forEach(item => formData.append('file',item.files[0]));
-			textList.forEach(item => formData.append(item.name,item.files[0]));
+			textList.forEach(item => formData.append(item.name,item.value));
 			
 			//ajax로 전송
 			fetch('./fileUpload.do',{
