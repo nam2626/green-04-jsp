@@ -7,6 +7,7 @@ import dto.MemberDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import service.BoardService;
 import view.ModelAndView;
 
 public class BoardWriteController implements Controller {
@@ -26,11 +27,14 @@ public class BoardWriteController implements Controller {
 		board.setTitle(title);
 		board.setContent(content);
 		
+		//DB 등록
+		BoardService.getInstance().insertBoard(board);
+		
 		System.out.println(board);
 		//파일 쓰기 처리
 		
 		//board, board_file 내용을 등록
-		return null;
+		return new ModelAndView("./main.do", true);
 	}
 
 }

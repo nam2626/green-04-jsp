@@ -23,6 +23,10 @@ public class BoardService {
 	public List<BoardDTO> selectBoardList(int page) {
 		return mapper.selectBoardList(page);
 	}
+
+	public int insertBoard(BoardDTO board) {
+		return mapper.insertBoard(board);
+	}
 }
 
 
