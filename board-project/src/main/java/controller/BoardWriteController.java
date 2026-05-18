@@ -10,7 +10,13 @@ public class BoardWriteController implements Controller {
 
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// TODO Auto-generated method stub
+		//로그인한 계정의 회원번호 읽어옴
+		
+		//title, content
+		
+		//파일 쓰기 처리
+		
+		//board, board_file 내용을 등록
 		return null;
 	}
 
