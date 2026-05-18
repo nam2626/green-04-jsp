@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<jsp:include page="./template/header.jsp"></jsp:include>
 	<hr>
 	<!-- 게시판 글목록
 			글번호, 제목[댓글 개수], 작성일, 닉네임, 조회수, 좋아요, 싫어요

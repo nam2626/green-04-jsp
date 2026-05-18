@@ -47,7 +47,7 @@ public class HandlerMapping {
 		case "login.do": // 실제 로그인 처리
 			controller = new LoginController();
 			break;
-		case "loginOut.do": // 로그아웃 처리
+		case "logout.do": // 로그아웃 처리
 			controller = new LogoutController();
 			break;
 		case "delete.do": // 회원 삭제 처리

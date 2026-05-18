@@ -40,7 +40,7 @@ public class LoginController implements Controller {
 			// 3-2. 로그인 성공 시: 세션(Session)에 회원 정보를 저장합니다.
 			// 세션에 저장된 정보는 브라우저를 닫거나 로그아웃 전까지 유지됩니다.
 			HttpSession session = request.getSession();
-			session.setAttribute("member", member);
+			session.setAttribute("user", member);
 			
 			// 메인 페이지(main.do)로 리다이렉트합니다.
 			return new ModelAndView("./main.do", true);
