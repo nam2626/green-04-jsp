@@ -17,7 +17,15 @@
 		<result column="write_update_date" property="updateDate"/>
 	</resultMap>
 	
-
+	<select id="selectBoardList" resultMap="board">
+		select * 
+		from 
+			(select ROW_NUMBER() OVER(ORDER BY b.bno desc) as rw, b.*
+				from 
+			board_view b) bv
+		where 
+			ceil(bv.rw/30) = #{page}
+	</select>
 </mapper>
 
 
