@@ -37,12 +37,19 @@
 		    theme: 'snow'
 		  });
 		document.querySelector("form").onsubmit = (e) => {
-			e.preventDefault();
+			//e.preventDefault();
 			console.log(quill.getContents());
+			console.log(quill.getText());
+			console.log(quill.getSemanticHTML());
+			document.querySelector("#content").value = quill.getSemanticHTML();  
 		}
 	}
 </script>
-
+<style>
+	#editor {
+	  height: 500px;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="./template/header.jsp"></jsp:include>
