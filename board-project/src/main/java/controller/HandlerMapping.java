@@ -62,6 +62,9 @@ public class HandlerMapping {
 		case "update.do": // 실제 회원 정보 수정 처리
 			controller = new MemberUpdateController();
 			break;
+		case "boardWriteView.do":
+			controller = new BoardWriteViewController();
+			break;
 		}
 		return controller;
 	}
