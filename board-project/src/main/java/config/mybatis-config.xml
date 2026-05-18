@@ -31,5 +31,13 @@
 	<mappers>
 		<!-- 실제 SQL문이 작성되어 있는 Mapper 파일의 위치를 등록합니다. -->
 		<mapper resource="config/member-mapper.xml"/>
+		<mapper resource="config/board-mapper.xml"/>
 	</mappers>
 </configuration>
+
+
+
+
+
+
+
