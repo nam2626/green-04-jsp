@@ -26,6 +26,10 @@
 		where 
 			ceil(bv.rw/30) = #{page}
 	</select>
+	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="bno">
+		insert into board(title,content,mno)
+		values(#{title},#{content},#{mno})
+	</insert>
 </mapper>
 
 
