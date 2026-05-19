@@ -44,6 +44,10 @@ public class BoardService {
 	public List<BoardFileDTO> selectFileList(int bno) {
 		return mapper.selectFileList(bno);
 	}
+
+	public int updateBoardCount(int bno) {
+		return mapper.updateBoardCount(bno);
+	}
 }
 
 

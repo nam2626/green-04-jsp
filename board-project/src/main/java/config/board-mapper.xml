@@ -50,6 +50,11 @@
 	<select id="selectFileList" resultType="dto.BoardFileDTO">
 		select * from board_file where bno = #{bno}
 	</select>
+	
+	<update id="updateBoardCount">
+		update board set bcount = bcount + 1		
+		where bno = #{bno}
+	</update>
 </mapper>
 
 

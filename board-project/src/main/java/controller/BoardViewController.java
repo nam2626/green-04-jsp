@@ -1,12 +1,14 @@
 package controller;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
 
 import dto.BoardDTO;
 import dto.BoardFileDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import service.BoardService;
 import view.ModelAndView;
 
@@ -26,7 +28,14 @@ public class BoardViewController implements Controller {
 		request.setAttribute("board", board);
 		request.setAttribute("flist", flist);
 		//6. 조회수 증가 처리
-		
+		HttpSession session = request.getSession();
+		HashSet<Integer> set = (HashSet<Integer>) session.getAttribute("history");
+		if(set == null) {
+			set = new HashSet<Integer>();
+			session.setAttribute("history", set);
+		}
+		if(set.add(bno))
+			BoardService.getInstance().updateBoardCount(bno);
 		
 		return new ModelAndView("board_view", false);
 	}
