@@ -337,3 +337,154 @@ button[type="button"],
 .ql-container {
     font-size: 14px;
 }
+
+/* ===== Board View (board_view.jsp) ===== */
+main {
+    max-width: 820px;
+    margin: 32px auto;
+    padding: 0 16px;
+}
+
+article {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 32px 36px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.board-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #222;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 10px;
+}
+
+.board-meta-info {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 4px;
+}
+
+.board-meta-info + .board-meta-info {
+    margin-bottom: 16px;
+}
+
+.board-content {
+    min-height: 200px;
+    padding: 20px 0;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    margin: 16px 0;
+    line-height: 1.7;
+    color: #333;
+    font-size: 15px;
+}
+
+.board-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+/* 좋아요 / 싫어요 버튼 */
+.btn-like,
+.btn-hate {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    background-color: #fff;
+    color: #555;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+
+.btn-like img,
+.btn-hate img {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-like:hover {
+    background-color: #e8f0fe;
+    border-color: #1a73e8;
+    color: #1a73e8;
+    opacity: 1;
+}
+
+.btn-hate:hover {
+    background-color: #fce8e6;
+    border-color: #d93025;
+    color: #d93025;
+    opacity: 1;
+}
+
+/* 뒤로가기 / 수정 / 삭제 버튼 */
+.btn-back {
+    background-color: #f1f3f4;
+    color: #444;
+}
+
+.btn-update {
+    background-color: #1a73e8;
+    color: #fff;
+}
+
+.btn-delete {
+    background-color: #fff;
+    color: #d93025;
+    border: 1px solid #d93025;
+}
+
+.btn-delete:hover {
+    background-color: #fce8e6;
+    opacity: 1;
+    text-decoration: none;
+}
+
+.btn-update:hover {
+    text-decoration: none;
+    opacity: 0.88;
+}
+
+.btn-back:hover {
+    text-decoration: none;
+    opacity: 0.88;
+}
+
+/* 첨부파일 목록 */
+.board-file-list {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.board-file-list p {
+    margin-bottom: 6px;
+}
+
+.board-file-list a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    color: #1a73e8;
+    padding: 3px 0;
+}
+
+.board-file-list a::before {
+    content: '📎';
+    font-size: 12px;
+}
+
+.board-file-list a:hover {
+    text-decoration: underline;
+}

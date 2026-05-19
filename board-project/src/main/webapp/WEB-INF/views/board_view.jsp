@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시글 보기</title>
 </head>
 <body>
 	<jsp:include page="./template/header.jsp"></jsp:include>
@@ -43,19 +43,6 @@
 			</div>
 		</article>
 	</main>
-	
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
