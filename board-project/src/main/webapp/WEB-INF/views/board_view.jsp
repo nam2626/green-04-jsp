@@ -23,7 +23,12 @@
 			const response = await fetch(`./boardLike.do?bno=\${bno}`);
 			const data = await response.json();
 
+			
 			alert(data.msg);
+			//로그인 안했을 떄 경고창 확인 후 로그인 페이지로 이동
+			if(data.resultCode == 1)
+				location.href="./loginView.do";
+
 			document.querySelector('.btn-like span').innerHTML = data.count;
 		}
 	}
