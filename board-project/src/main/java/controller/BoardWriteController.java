@@ -1,12 +1,17 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import dto.BoardDTO;
 import dto.MemberDTO;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
 import service.BoardService;
 import view.ModelAndView;
 
@@ -27,14 +32,52 @@ public class BoardWriteController implements Controller {
 		board.setTitle(title);
 		board.setContent(content);
 		
-		//DB 등록
+		//board table에 데이터 등록
 		BoardService.getInstance().insertBoard(board);
 		
 		System.out.println(board);
 		//파일 쓰기 처리
+		try {
+			File root = new File("c:\\fileupload");
+			//파일 업로드할 경로 확인 후 없으면 생성
+			if(!root.exists()) {
+				root.mkdirs();
+			}
+			//파일 업로드할 정보를 리스트로 보관
+			List<BoardFileDTO> list = new ArrayList<>();
+			
+			request.getParts().forEach(part -> {
+				if(part.getSubmittedFileName() == null || part.getSize() == 0) return;
+				
+				//경로를 완성하고 파일 쓰기
+				String path = root.getAbsolutePath() + 
+						File.pathSeparator + part.getSubmittedFileName();
+				part.write(path);
+				//리스트에 파일 정보를 저장
+				list.add(new BoardFileDTO(board.getBno(),path));
+			});
+			
+			//board_file 테이블에 파일 내용을 등록
+			BoardService.getInstance().insertBoardFile(list);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ServletException e) {
+			e.printStackTrace();
+		}
 		
-		//board, board_file 내용을 등록
+		
+		
+		
+		
+		
 		return new ModelAndView("./main.do", true);
 	}
 
 }
+
+
+
+
+
+
+
