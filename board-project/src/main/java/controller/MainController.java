@@ -30,6 +30,7 @@ public class MainController implements Controller {
 		
 		// 3. 읽어온 게시글 리스트를 request 영역에 저장
 		request.setAttribute("list", list);
+		request.setAttribute("pagging", pagging);
 		
 		// 4. main.jsp로 이동		
 		return new ModelAndView("main", false);
