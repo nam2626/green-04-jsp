@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>글쓰기</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 <script>
@@ -54,19 +55,26 @@
 <body>
 	<jsp:include page="./template/header.jsp"></jsp:include>
 	<hr>
-	<h1>글쓰기 페이지</h1>
-	<form action="./boardWrite.do" method="post" enctype="multipart/form-data">
-		제목 : <input type="text" name="title"><br>
-		내용<br>
-		<div id="editor"></div>
-		<input type="hidden" name="content" id="content">
-		<hr>
-		<input type="file" name="file"><br>
-		<input type="file" name="file"><br>
-		<input type="file" name="file"><br>
-		<button>글쓰기</button>
-		<button type="button" onclick="history.back();">뒤로가기</button>
-	</form>
+	<div class="write-card">
+		<h1>글쓰기</h1>
+		<form action="./boardWrite.do" method="post" enctype="multipart/form-data">
+			<div class="write-title-group">
+				<label for="writeTitle">제목</label>
+				<input type="text" id="writeTitle" name="title" placeholder="제목을 입력해주세요">
+			</div>
+			<div id="editor"></div>
+			<input type="hidden" name="content" id="content">
+			<div class="write-file-group">
+				<input type="file" name="file">
+				<input type="file" name="file">
+				<input type="file" name="file">
+			</div>
+			<div class="write-actions">
+				<button>글쓰기</button>
+				<button type="button" onclick="history.back();">뒤로가기</button>
+			</div>
+		</form>
+	</div>
 </body>
 </html>
 
