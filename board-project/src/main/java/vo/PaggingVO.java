@@ -1,7 +1,5 @@
+package vo;
 
-/**
- * 
- */
 public class PaggingVO {
 	// 전체 게시글 개수
 	private int count;
