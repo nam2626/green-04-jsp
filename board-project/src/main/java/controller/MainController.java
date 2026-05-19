@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import service.BoardService;
 import service.MemberService;
 import view.ModelAndView;
+import vo.PaggingVO;
 
 public class MainController implements Controller {
 
@@ -18,6 +19,11 @@ public class MainController implements Controller {
 		// 1. 페이지 번호 읽어옴, 만약 페이지 번호가 없다면? 1로 지정
 		String pageNo = request.getParameter("page");
 		int page = pageNo == null ? 1 : Integer.parseInt(pageNo);
+		
+		// 전체 게시글 개수를 읽어옴
+		int total = BoardService.getInstance().selectBoardCount();
+		
+		PaggingVO pagging = new PaggingVO(total, page);
 		
 		// 2. 페이지 번호해당하는 게시글 목록 읽어옴
 		List<BoardDTO> list = BoardService.getInstance().selectBoardList(page);

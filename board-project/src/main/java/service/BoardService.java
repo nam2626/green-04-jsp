@@ -32,6 +32,10 @@ public class BoardService {
 	public int insertBoardFile(List<BoardFileDTO> list) {
 		return mapper.insertBoardFile(list);
 	}
+
+	public int selectBoardCount() {
+		return mapper.selectBoardCount();
+	}
 }
 
 

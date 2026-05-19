@@ -38,6 +38,10 @@
 		</foreach>
 		
 	</insert>
+	
+	<select id="selectBoardCount" resultType="int">
+		select count(*) from board_view
+	</select>
 </mapper>
 
 
