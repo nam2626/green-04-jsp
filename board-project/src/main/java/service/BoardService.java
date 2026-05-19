@@ -36,6 +36,18 @@ public class BoardService {
 	public int selectBoardCount() {
 		return mapper.selectBoardCount();
 	}
+
+	public BoardDTO selectBoard(int bno) {
+		return mapper.selectBoard(bno);
+	}
+
+	public List<BoardFileDTO> selectFileList(int bno) {
+		return mapper.selectFileList(bno);
+	}
+
+	public int updateBoardCount(int bno) {
+		return mapper.updateBoardCount(bno);
+	}
 }
 
 

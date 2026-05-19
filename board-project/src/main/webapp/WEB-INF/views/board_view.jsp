@@ -13,7 +13,7 @@
 	<main>
 		<article>
 			<h3 class="board-title">제목 : ${board.title }</h3>
-			<p class="board-meta-info">작성자 : ${board.nickName },
+			<p class="board-meta-info">작성자 : ${board.nickName }, 
 				작성일 : ${board.writeDate }(${board.updateDate })</p>
 			<p class="board-meta-info">조회수 : ${board.bcount}</p>
 			<div class="board-content">

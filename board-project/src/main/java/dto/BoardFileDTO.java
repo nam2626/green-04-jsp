@@ -1,5 +1,7 @@
 package dto;
 
+import java.io.File;
+
 public class BoardFileDTO {
 	private int fno;
 	private int bno;
@@ -12,6 +14,10 @@ public class BoardFileDTO {
 	public BoardFileDTO(int bno, String fpath) {
 		this.bno = bno;
 		this.fpath = fpath;
+	}
+	
+	public String getFileName() {
+		return new File(fpath).getName();
 	}
 
 	public int getFno() {

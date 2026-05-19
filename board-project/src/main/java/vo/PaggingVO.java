@@ -41,7 +41,7 @@ public class PaggingVO {
 
 	// 현재 페이지 그룹의 마지막 페이지 번호
 	public int getEndPageOfPageGroup() {
-		return Math.min(getTotalPage(), getStartPageOfPageGroup()*PAGE_GROUP_COUNT);
+		return Math.min(getTotalPage(), getCurrentPageGroupNo()*PAGE_GROUP_COUNT);
 	}
 
 	// 이전 페이지 그룹이 있냐?

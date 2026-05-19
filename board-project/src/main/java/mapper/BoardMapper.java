@@ -15,4 +15,10 @@ public interface BoardMapper {
 
 	int selectBoardCount();
 
+	BoardDTO selectBoard(int bno);
+
+	List<BoardFileDTO> selectFileList(int bno);
+
+	int updateBoardCount(int bno);
+
 }
