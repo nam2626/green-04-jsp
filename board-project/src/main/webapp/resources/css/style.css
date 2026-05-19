@@ -406,6 +406,10 @@ article {
     cursor: pointer;
     transition: background-color 0.15s, border-color 0.15s;
 }
+.btn-hate img{
+	transform:rotateZ(180deg);
+}
+
 
 .btn-like img,
 .btn-hate img {
