@@ -71,6 +71,9 @@ public class HandlerMapping {
 		case "boardView.do":
 			controller = new BoardViewController();
 			break;
+		case "boardLike.do":
+			controller = new BoardLikeController();
+			break;
 		}
 		return controller;
 	}
