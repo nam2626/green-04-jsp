@@ -44,7 +44,7 @@
 						<div class="pagination">
 							<!-- 페이징 처리 영역 -->
 							<c:forEach var="i" begin="${requestScope.pagging.startPageOfPageGroup }" end="${requestScope.pagging.endPageOfPageGroup }">
-								${i }							
+								<a href="./main.do?page=${i}" <c:if test="${i == pagging.currentPage }">class="active"</c:if>>${i }</a>							
 							</c:forEach>
 						</div>
 					</td>
