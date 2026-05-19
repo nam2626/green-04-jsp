@@ -42,10 +42,20 @@
 				<tr>
 					<td colspan="7">
 						<div class="pagination">
+							<!--  이전 페이지 그룹 이동 ◀
+										이전 페이지 그룹이 있을때만 링크를 출력
+							 -->
+							 
 							<!-- 페이징 처리 영역 -->
 							<c:forEach var="i" begin="${requestScope.pagging.startPageOfPageGroup }" end="${requestScope.pagging.endPageOfPageGroup }">
 								<a href="./main.do?page=${i}" <c:if test="${i == pagging.currentPage }">class="active"</c:if>>${i }</a>							
 							</c:forEach>
+							<!-- 다음 페이지 그룹 이동 ▶ 
+									다음 페이지 그룹이 있을때만 링크를 출력
+							-->
+							<c:if test="${pagging.nextPageGroup }">
+								<a href="./main.do?page=${pagging.endPageOfPageGroup + 1}">▶</a>
+							</c:if>
 						</div>
 					</td>
 				</tr>
