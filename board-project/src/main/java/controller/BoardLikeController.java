@@ -37,7 +37,7 @@ public class BoardLikeController implements Controller {
 						.deleteBoardLike(member.getNo(),bno);
 				map.put("msg", "해당 게시글에 좋아요를 취소 하셨습니다");
 			}
-			int count = BoardService.getInstance().boardLikeCount(bno);
+			int count = BoardService.getInstance().selectBoardLikeCount(bno);
 			map.put("count", count);
 		}
 		

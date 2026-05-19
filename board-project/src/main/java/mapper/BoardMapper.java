@@ -1,5 +1,6 @@
 package mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import dto.BoardDTO;
@@ -21,4 +22,14 @@ public interface BoardMapper {
 
 	int updateBoardCount(int bno);
 
+	int insertBoardLike(HashMap<String, Integer> map);
+
+	int deleteBoardLike(HashMap<String, Integer> map);
+
+	int selectBoardLikeCount(int bno);
+
 }
+
+
+
+

@@ -64,8 +64,8 @@ public class BoardService {
 		return mapper.deleteBoardLike(map);
 	}
 
-	public int boardLikeCount(int bno) {
-		return mapper.boardLikeCount(bno);
+	public int selectBoardLikeCount(int bno) {
+		return mapper.selectBoardLikeCount(bno);
 	}
 }
 
