@@ -6,6 +6,29 @@
 <head>
 <meta charset="UTF-8">
 <title>게시글 보기</title>
+<script>
+	window.onload = (e) => {
+		// 좋아요 버튼을 클릭 경고창 출력
+		// 경고창 출력시 글번호도 출력
+		const bno = '${board.bno}';
+		document.querySelector('.btn-like').onclick = async (e) => {
+			// alert(`좋아요 버튼 클릭 : \${bno}`);
+			// boardLike.do 호출해서 좋아요 처리 -> board_like 추가
+			// 전달할 데이터 : 글번호
+			// 받는 데이터 : 결과메세지 msg
+			// 					'이 게시글에 좋아요를 하셨습니다.'
+			//					'이 게시글에 좋아요를 취소하셨습니다.'
+			//			    좋아요 개수 count
+			// 데이터를 응답 받으면 좋아요 개수를 최신화, 결과 메세지는 경고창으로 출력
+			const response = await fetch(`./boardLike.do?bno=\${bno}`);
+			const data = await response.json();
+
+			alert(data.msg);
+			document.querySelector('.btn-like span').innerHTML = data.count;
+		}
+	}
+
+</script>
 </head>
 <body>
 	<jsp:include page="./template/header.jsp"></jsp:include>
@@ -13,6 +36,7 @@
 	<main>
 		<article>
 			<h3 class="board-title">제목 : ${board.title }</h3>
+			<p class="board-meta-info">글번호 : <span id="bno">${board.bno}</span></p>
 			<p class="board-meta-info">작성자 : ${board.nickName }, 
 				작성일 : ${board.writeDate }(${board.updateDate })</p>
 			<p class="board-meta-info">조회수 : ${board.bcount}</p>
