@@ -17,7 +17,7 @@ public class BoardViewController implements Controller {
 		//1. 조회할 게시글 글번호 받아옴
 		int bno = Integer.parseInt(request.getParameter("bno"));
 		//2. 글번호에 해당하는 게시글 받아옴
-		BoardDTO board = BoardService.selectBoard(bno);
+		BoardDTO board = BoardService.getInstance().selectBoard(bno);
 		//3. 글번호에 해당하는 첨부파일 목록 받아옴
 		List<BoardFileDTO> flist = BoardService.getInstance().selectFileList(bno);
 		//4. 글번호에 해당하는 댓글 목록 받아옴
