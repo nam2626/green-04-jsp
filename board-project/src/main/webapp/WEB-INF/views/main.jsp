@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
 <body>
 	<jsp:include page="./template/header.jsp"></jsp:include>
@@ -42,7 +43,9 @@
 					<td colspan="7">
 						<div class="pagination">
 							<!-- 페이징 처리 영역 -->
-							페이징 처리 영역
+							<c:forEach var="i" begin="${requestScope.pagging.startPageOfPageGroup }" end="${requestScope.pagging.endPageOfPageGroup }">
+								${i }							
+							</c:forEach>
 						</div>
 					</td>
 				</tr>
