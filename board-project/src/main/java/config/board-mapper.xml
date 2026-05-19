@@ -30,6 +30,14 @@
 		insert into board(title,content,mno)
 		values(#{title},#{content},#{mno})
 	</insert>
+	<insert id="insertBoardFile">
+		insert into board_file(bno,fpath)
+		values
+		<foreach collection="list" item="file" separator=",">
+			(#{bno},#{fpath})
+		</foreach>
+		
+	</insert>
 </mapper>
 
 
