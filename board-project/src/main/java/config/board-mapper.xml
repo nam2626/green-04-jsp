@@ -34,7 +34,7 @@
 		insert into board_file(bno,fpath)
 		values
 		<foreach collection="list" item="file" separator=",">
-			(#{bno},#{fpath})
+			(#{file.bno},#{file.fpath})
 		</foreach>
 		
 	</insert>

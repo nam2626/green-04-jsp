@@ -52,7 +52,7 @@ public class BoardWriteController implements Controller {
 				
 				//경로를 완성하고 파일 쓰기
 				String path = root.getAbsolutePath() + 
-						File.pathSeparator + part.getSubmittedFileName();
+						File.separator + part.getSubmittedFileName();
 				try {
 					part.write(path);
 				} catch (IOException e) {
@@ -62,6 +62,7 @@ public class BoardWriteController implements Controller {
 				list.add(new BoardFileDTO(board.getBno(),path));
 			});
 			
+			System.out.println(list);
 			//board_file 테이블에 파일 내용을 등록
 			BoardService.getInstance().insertBoardFile(list);
 			
