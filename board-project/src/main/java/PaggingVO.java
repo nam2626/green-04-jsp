@@ -1,4 +1,7 @@
 
+/**
+ * 
+ */
 public class PaggingVO {
 	// 전체 게시글 개수
 	private int count;
@@ -43,6 +46,29 @@ public class PaggingVO {
 		return Math.min(getTotalPage(), getStartPageOfPageGroup()*PAGE_GROUP_COUNT);
 	}
 
+	// 이전 페이지 그룹이 있냐?
+	public boolean isPriviousPageGroup() {
+		return getCurrentPageGroupNo() > 1;
+	}
+
+	// 다음 페이지 그룹이 있냐?
+	public boolean isNextPageGroup() {
+		return getCurrentPageGroupNo() < getTotalPageGroup();
+	}
+
+	@Override
+	public String toString() {
+		return "PaggingVO [count=" + count + ", currentPage=" + currentPage + ", PAGE_CONTENT_COUNT="
+				+ PAGE_CONTENT_COUNT + ", PAGE_GROUP_COUNT=" + PAGE_GROUP_COUNT + ", getCurrentPage()="
+				+ getCurrentPage() + ", getTotalPage()=" + getTotalPage() + ", getTotalPageGroup()="
+				+ getTotalPageGroup() + ", getCurrentPageGroupNo()=" + getCurrentPageGroupNo()
+				+ ", getStartPageOfPageGroup()=" + getStartPageOfPageGroup() + ", getEndPageOfPageGroup()="
+				+ getEndPageOfPageGroup() + ", isPriviousPageGroup()=" + isPriviousPageGroup() + ", isNextPageGroup()="
+				+ isNextPageGroup() + "]";
+	}
+	
+	
+	
 }
 
 
