@@ -57,7 +57,7 @@
 	</update>
 	
 	<insert id="insertBoardLike">
-		insert into board_like values(#{bno},#{mno})
+		insert into board_like(bno,no) values(#{bno},#{mno})
 	</insert>
 	
 	<delete id="deleteBoardLike">
