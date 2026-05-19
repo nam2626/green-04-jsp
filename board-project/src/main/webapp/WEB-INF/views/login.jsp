@@ -5,20 +5,27 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 관리 - 로그인</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
 <body>
-	<h2>로그인</h2>
-	<!-- 
-		로그인 정보를 입력받아 ./login.do 경로로 전송하는 폼입니다. 
-		비밀번호가 포함되므로 post 방식을 사용합니다.
-	-->
-	<form action="./login.do" method="post">
-		<input type="text" name="id" placeholder="아이디를 입력해주세요"><br>
-		<input type="text" name="passwd" placeholder="암호를 입력해주세요"><br>
-		<button>로그인</button>
-		
-		<!-- 회원가입 버튼 클릭 시 가입 페이지(registerView.do)로 이동합니다. -->
-		<button type="button" id="btnRegister" onclick="location.href='./registerView.do'">회원가입</button>
-	</form>
+	<div class="form-card">
+		<h2>로그인</h2>
+		<form action="./login.do" method="post">
+			<div class="form-group">
+				<label for="loginId">아이디</label>
+				<input type="text" id="loginId" name="id" placeholder="아이디를 입력해주세요">
+			</div>
+			<div class="form-group">
+				<label for="loginPw">비밀번호</label>
+				<input type="text" id="loginPw" name="passwd" placeholder="암호를 입력해주세요">
+			</div>
+			<div class="form-group" style="margin-top: 8px;">
+				<button class="btn-full">로그인</button>
+			</div>
+			<div class="form-group">
+				<button type="button" id="btnRegister" class="btn-full" onclick="location.href='./registerView.do'">회원가입</button>
+			</div>
+		</form>
+	</div>
 </body>
 </html>

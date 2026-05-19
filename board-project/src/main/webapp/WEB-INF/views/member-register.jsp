@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 관리 - 회원가입</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 <script>
 	/** 모든 필드가 올바르게 입력되었는지 확인하는 함수입니다. */
 	async function checkField(){
@@ -82,20 +83,34 @@
 </script>
 </head>
 <body>
-	<h2>회원가입</h2>
-	<!-- 회원 정보를 입력받아 ./register.do로 전송합니다. -->
-	<form action="./register.do" method="post">
-		<input type="text" id="id" name="id" placeholder="아이디를 입력해주세요">
-		<button type="button" id="btnCheck">중복확인</button><br>
-		<!-- 중복 체크 결과가 나타날 자리 -->
-		<div id="idCheckResult"></div>
-		
-		<input type="text" name="passwd" placeholder="암호를 입력해주세요"><br>
-		<input type="text" name="name" placeholder="이름을 입력해주세요"><br>
-		<input type="text" name="nick" placeholder="닉네임 입력해주세요"><br>
-		
-		<button>가입하기</button>
-		<button type="button" id="btnCancel">취소</button>
-	</form>
+	<div class="form-card">
+		<h2>회원가입</h2>
+		<form action="./register.do" method="post">
+			<div class="form-group">
+				<label for="id">아이디</label>
+				<div class="input-with-btn">
+					<input type="text" id="id" name="id" placeholder="아이디를 입력해주세요">
+					<button type="button" id="btnCheck">중복확인</button>
+				</div>
+				<div id="idCheckResult"></div>
+			</div>
+			<div class="form-group">
+				<label>비밀번호</label>
+				<input type="text" name="passwd" placeholder="암호를 입력해주세요">
+			</div>
+			<div class="form-group">
+				<label>이름</label>
+				<input type="text" name="name" placeholder="이름을 입력해주세요">
+			</div>
+			<div class="form-group">
+				<label>닉네임</label>
+				<input type="text" name="nick" placeholder="닉네임 입력해주세요">
+			</div>
+			<div class="form-group" style="margin-top: 8px; flex-direction: row; gap: 10px;">
+				<button class="btn-full">가입하기</button>
+				<button type="button" id="btnCancel" class="btn-full">취소</button>
+			</div>
+		</form>
+	</div>
 </body>
 </html>
