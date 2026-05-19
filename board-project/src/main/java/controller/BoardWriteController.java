@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.BoardDTO;
+import dto.BoardFileDTO;
 import dto.MemberDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -52,21 +53,23 @@ public class BoardWriteController implements Controller {
 				//경로를 완성하고 파일 쓰기
 				String path = root.getAbsolutePath() + 
 						File.pathSeparator + part.getSubmittedFileName();
-				part.write(path);
+				try {
+					part.write(path);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 				//리스트에 파일 정보를 저장
 				list.add(new BoardFileDTO(board.getBno(),path));
 			});
 			
 			//board_file 테이블에 파일 내용을 등록
 			BoardService.getInstance().insertBoardFile(list);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ServletException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
 		
 		
 		

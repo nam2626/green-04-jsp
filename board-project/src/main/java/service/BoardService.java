@@ -4,6 +4,7 @@ import java.util.List;
 
 import config.DBManager;
 import dto.BoardDTO;
+import dto.BoardFileDTO;
 import mapper.BoardMapper;
 
 public class BoardService {
@@ -26,6 +27,10 @@ public class BoardService {
 
 	public int insertBoard(BoardDTO board) {
 		return mapper.insertBoard(board);
+	}
+
+	public int insertBoardFile(List<BoardFileDTO> list) {
+		return mapper.insertBoardFile(list);
 	}
 }
 
