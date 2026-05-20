@@ -91,6 +91,22 @@
 				</c:forEach>
 			</div>
 		</article>
+		<hr>
+		<section class="comment-area">
+			<!-- 댓글 폼 
+					1. 로그인 했을 때만 댓글 입력 폼을 작성
+						- 댓글, 글번호
+					2. 로그인 안했을 때는 '댓글을 입력하실려면 로그인 하세요' 
+			-->
+			<form action="./boardCommentInsert.do" method="post" class="comment-form">
+				<textarea name="content" required></textarea>
+				<button>댓글달기</button>
+				<input type="hidden" name="bno" value="${board.bno}">
+			</form>
+
+			<!-- 댓글 목록 -->
+
+		</section>
 	</main>
 
 </body>
