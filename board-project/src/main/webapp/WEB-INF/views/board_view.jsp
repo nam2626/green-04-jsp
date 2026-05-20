@@ -113,7 +113,7 @@
 			</div>
 			<div class="board-actions">
 				<a href="javascript:history.back();" class="btn btn-back">뒤로가기</a>
-				<c:if test="${session.user.no == board.mno }">
+				<c:if test="${sessionScope.user.no == board.mno }">
 					<a href="./boardDelete.do?bno=${board.bno }" class="btn btn-delete">삭제</a>
 					<a href="./boardUpdateView.do?bno=${board.bno }" class="btn btn-update">수정</a>
 				</c:if>
