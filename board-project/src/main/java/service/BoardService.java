@@ -145,8 +145,12 @@ public class BoardService {
 		
 	}
 
-	public int selectBoardCommentLikeHateCount(int cno) {
-		return mapper.selectBoardCommentLikeHateCount(cno);
+	public int selectBoardCommentLikeHateCount(int cno,String mode) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("cno", cno);
+		map.put("mode", mode);
+
+		return mapper.selectBoardCommentLikeHateCount(map);
 	}
 }
 

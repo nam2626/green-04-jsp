@@ -45,7 +45,7 @@ public class BoardCommentLikeHateController implements Controller {
 					map.put("msg", "해당 댓글에 싫어요를 취소 하셨습니다");
 				}
 			}
-			int count = BoardService.getInstance().selectBoardCommentLikeHateCount(cno);
+			int count = BoardService.getInstance().selectBoardCommentLikeHateCount(cno,mode);
 			map.put("count", count); // 화면에 표시할 수 있게 맵에 담습니다.
 		}
 
