@@ -31,6 +31,25 @@
 
 			document.querySelector('.btn-like span').innerHTML = data.count;
 		}
+
+		document.querySelector('.btn-hate').onclick = async (e) => {
+		 	//1. ajax 호출할 url 완성
+			const url = `./boardHate.do?bno=\${bno}`;
+			//2. ajax 호출
+			const response = await fetch(url);
+			const data = response.json();
+			//3. 결과 받아서 출력
+			// resultCode에 따라서 하는 일을 구분
+			// 1 : 로그인 안했을 떄
+			// 0 : 싫어요 했거나/취소했거나
+			alert(data.msg);
+			if(data.resultCode == 1)
+				location.href = "./loginView.do";
+
+			//싫어요 개수 최신화
+			document.querySelector('.btn-hate span').innerHTML = data.count;
+			
+		}
 	}
 
 </script>
