@@ -127,6 +127,14 @@ public class BoardService {
 	public List<BoardCommentDTO> selectBoardCommentList(int bno) {
 		return selectBoardCommentList(bno,1);
 	}
+
+	public int insertBoardCommentLikeHate(int no, int cno, String mode) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("cno", cno);
+		map.put("mno", no);
+		map.put("mode", mode);
+		return mapper.insertBoardCommentLikeHate(map);
+	}
 }
 
 

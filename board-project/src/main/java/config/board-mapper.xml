@@ -128,6 +128,19 @@
 		where 
 			bcv.page = #{page};
 	</select>
+	<insert id="insertBoardCommentLikeHate">
+		insert into 
+			<choose>
+				<when test="mode == 'like'">
+					board_comment_like(no,cno)
+				</when>
+				<otherwise>
+					board_comment_hate(no,cno)
+				</otherwise>
+			</choose>
+		values(#{mno},#{cno})
+	
+	</insert>
 	
 </mapper>
 

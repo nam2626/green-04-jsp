@@ -54,6 +54,8 @@ public interface BoardMapper {
 
 	List<BoardCommentDTO> selectBoardCommentList(HashMap<String, Integer> map);
 
+	int insertBoardCommentLikeHate(HashMap<String, Object> map);
+
 
 }
 
