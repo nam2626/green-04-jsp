@@ -144,6 +144,10 @@ public class BoardService {
 		return mapper.deleteBoardCommentLikeHate(map);
 		
 	}
+
+	public int selectBoardCommentLikeHateCount(int cno) {
+		return mapper.selectBoardCommentLikeHateCount(cno);
+	}
 }
 
 
