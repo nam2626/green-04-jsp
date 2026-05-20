@@ -119,6 +119,16 @@
 		values(#{bno},#{content},#{mno})
 	</insert>
 	
+	<select id="selectBoardCommentList" resultType="comment">
+		select * 
+		from
+			(select ceil(row_number() over(order by bcv.cno desc) / 5) as page, bcv.*
+			from board_comment_view bcv
+			where bcv.bno = #{bno}) bcv
+		where 
+			bcv.page = #{page};
+	</select>
+	
 </mapper>
 
 

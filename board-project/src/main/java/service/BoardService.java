@@ -115,7 +115,20 @@ public class BoardService {
 	public int insertBoardComment(BoardCommentDTO comment) {
 		return mapper.insertBoardComment(comment);
 	}
+
+	public List<BoardCommentDTO> selectBoardCommentList(int bno, int page) {
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("bno", bno);
+		map.put("page", page);
+		
+		return mapper.selectBoardCommentList(map);
+	}
+
+	public List<BoardCommentDTO> selectBoardCommentList(int bno) {
+		return selectBoardCommentList(bno,1);
+	}
 }
+
 
 
 

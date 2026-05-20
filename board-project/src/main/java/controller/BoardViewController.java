@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 
+import dto.BoardCommentDTO;
 import dto.BoardDTO;
 import dto.BoardFileDTO;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,11 +31,17 @@ public class BoardViewController implements Controller {
 		List<BoardFileDTO> flist = BoardService.getInstance().selectFileList(bno);
 		
 		// 4. (추후 구현 예정) 글번호에 해당하는 댓글 목록을 받아옵니다.
+		//	 최초 댓글 개수 5개만 읽어옴
+		List<BoardCommentDTO> clist = 
+				BoardService.getInstance().selectBoardCommentList(bno);
+		
 		
 		// 5. 뷰(JSP) 화면에서 사용할 수 있도록 request 영역에 데이터를 저장합니다.
 		request.setAttribute("board", board);
 		request.setAttribute("flist", flist);
+		request.setAttribute("clist", clist);
 		
+		System.out.println(clist);
 		// 6. 조회수 증가 처리 (새로고침 시 조회수가 계속 오르는 것을 방지하기 위한 로직)
 		HttpSession session = request.getSession();
 		// 사용자가 어떤 글들을 읽었는지 기록하는 세트(HashSet: 중복을 허용하지 않음)를 가져옵니다.

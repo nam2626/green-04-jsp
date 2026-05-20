@@ -52,6 +52,9 @@ public interface BoardMapper {
 
 	int insertBoardComment(BoardCommentDTO comment);
 
+	List<BoardCommentDTO> selectBoardCommentList(HashMap<String, Integer> map);
+
+
 }
 
 

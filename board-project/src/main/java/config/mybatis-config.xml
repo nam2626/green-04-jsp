@@ -11,6 +11,7 @@
 	<typeAliases>
 		<!-- dto.MemberDTO 클래스를 앞으로 SQL 매퍼에서 'member'라는 이름으로 부릅니다. -->
 		<typeAlias type="dto.MemberDTO" alias="member"/>
+		<typeAlias type="dto.BoardCommentDTO" alias="comment"/>
 	</typeAliases>
 	
 	<!-- DB 접속 환경 설정 -->
