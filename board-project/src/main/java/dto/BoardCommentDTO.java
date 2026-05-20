@@ -1,14 +1,18 @@
 package dto;
 
+/**
+ * 댓글 정보를 담는 데이터 전달 객체(DTO)입니다.
+ * DB의 board_comment 테이블의 데이터와 대응됩니다.
+ */
 public class BoardCommentDTO {
-	private int cno;
-	private String content;
-	private String cdate;
-	private int mno;
-	private int bno;
-	private int clike;
-	private int chate;
-	private String nickName;
+	private int cno;          // 댓글 고유 번호
+	private String content;   // 댓글 내용
+	private String cdate;     // 작성일
+	private int mno;          // 작성자 회원 번호
+	private int bno;          // 게시글 번호
+	private int clike;        // 좋아요 수
+	private int chate;        // 싫어요 수
+	private String nickName;  // 작성자 닉네임 (조회용)
 
 	public String getNickName() {
 		return nickName;
@@ -82,8 +86,4 @@ public class BoardCommentDTO {
 		return "BoardCommentDTO [cno=" + cno + ", content=" + content + ", cdate=" + cdate + ", mno=" + mno + ", bno="
 				+ bno + ", clike=" + clike + ", chate=" + chate + ", nickName=" + nickName + "]";
 	}
-
-	
-	
-	
 }

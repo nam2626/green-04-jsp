@@ -30,8 +30,8 @@ public class BoardViewController implements Controller {
 		// 3. 해당 게시글에 첨부된 파일 목록을 DB에서 받아옵니다.
 		List<BoardFileDTO> flist = BoardService.getInstance().selectFileList(bno);
 		
-		// 4. (추후 구현 예정) 글번호에 해당하는 댓글 목록을 받아옵니다.
-		//	 최초 댓글 개수 5개만 읽어옴
+		// 4. 해당 게시글에 달린 댓글 목록을 받아옵니다.
+		// (기본적으로 첫 페이지에 해당하는 댓글 5개만 먼저 읽어옵니다.)
 		List<BoardCommentDTO> clist = 
 				BoardService.getInstance().selectBoardCommentList(bno);
 		

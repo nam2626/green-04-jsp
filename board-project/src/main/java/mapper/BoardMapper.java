@@ -44,20 +44,28 @@ public interface BoardMapper {
 	/** 특정 게시글의 현재 좋아요 총 개수를 세어 가져옵니다. */
 	int selectBoardLikeCount(int bno);
 
+	/** 싫어요를 누르면 게시글 번호와 회원 번호를 저장하여 싫어요 기록을 남깁니다. */
 	int insertBoardHate(HashMap<String, Integer> map);
 	
+	/** 싫어요를 다시 누르면 저장된 싫어요 기록을 지웁니다(취소). */
 	int deleteBoardHate(HashMap<String, Integer> map);
 	
+	/** 특정 게시글의 현재 싫어요 총 개수를 세어 가져옵니다. */
 	int selectBoardHateCount(int bno);
 
+	/** 새로운 댓글 정보를 DB 테이블에 저장합니다. */
 	int insertBoardComment(BoardCommentDTO comment);
 
+	/** 특정 게시글(bno)에 달린 댓글 목록을 페이지 단위로 조회해옵니다. */
 	List<BoardCommentDTO> selectBoardCommentList(HashMap<String, Integer> map);
 
+	/** 댓글에 좋아요 또는 싫어요를 클릭했을 때 기록을 남깁니다. */
 	int insertBoardCommentLikeHate(HashMap<String, Object> map);
 
+	/** 댓글의 좋아요 또는 싫어요 기록을 삭제(취소)합니다. */
 	int deleteBoardCommentLikeHate(HashMap<String, Object> map);
 
+	/** 특정 댓글의 좋아요 또는 싫어요 총 개수를 가져옵니다. */
 	int selectBoardCommentLikeHateCount(HashMap<String, Object> map);
 
 

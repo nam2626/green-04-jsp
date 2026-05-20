@@ -94,6 +94,7 @@ public class BoardService {
 		return mapper.selectBoardLikeCount(bno);
 	}
 	
+	/** 사용자가 특정 게시글에 싫어요를 누르면 DB에 기록합니다. */
 	public int insertBoardHate(int no, int bno) {
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		map.put("bno", bno);
@@ -101,6 +102,7 @@ public class BoardService {
 		return mapper.insertBoardHate(map);
 	}
 	
+	/** 싫어요를 취소할 때 호출됩니다. */
 	public int deleteBoardHate(int no, int bno) {
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		map.put("bno", bno);
@@ -108,14 +110,17 @@ public class BoardService {
 		return mapper.deleteBoardHate(map);
 	}
 	
+	/** 특정 게시글의 전체 싫어요 개수를 가져옵니다. */
 	public int selectBoardHateCount(int bno) {
 		return mapper.selectBoardHateCount(bno);
 	}
 
+	/** 새로운 댓글을 저장합니다. */
 	public int insertBoardComment(BoardCommentDTO comment) {
 		return mapper.insertBoardComment(comment);
 	}
 
+	/** 게시글의 댓글 목록을 페이징 처리하여 가져옵니다. */
 	public List<BoardCommentDTO> selectBoardCommentList(int bno, int page) {
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		map.put("bno", bno);
@@ -124,10 +129,12 @@ public class BoardService {
 		return mapper.selectBoardCommentList(map);
 	}
 
+	/** 댓글 목록의 첫 페이지(5개)를 가져옵니다. */
 	public List<BoardCommentDTO> selectBoardCommentList(int bno) {
 		return selectBoardCommentList(bno,1);
 	}
 
+	/** 댓글에 좋아요/싫어요를 클릭한 정보를 저장합니다. */
 	public int insertBoardCommentLikeHate(int no, int cno, String mode) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("cno", cno);
@@ -136,6 +143,7 @@ public class BoardService {
 		return mapper.insertBoardCommentLikeHate(map);
 	}
 
+	/** 댓글의 좋아요/싫어요 클릭 정보를 삭제합니다. */
 	public int deleteBoardCommentLikeHate(int no, int cno, String mode) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("cno", cno);
@@ -145,6 +153,7 @@ public class BoardService {
 		
 	}
 
+	/** 댓글의 좋아요 또는 싫어요 총 개수를 조회합니다. */
 	public int selectBoardCommentLikeHateCount(int cno,String mode) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("cno", cno);

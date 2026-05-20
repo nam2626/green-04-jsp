@@ -15,73 +15,68 @@
 </style>
 <script>
 	window.onload = (e) => {
-		// 좋아요 버튼을 클릭 경고창 출력
-		// 경고창 출력시 글번호도 출력
 		const bno = '${board.bno}';
+		
+		// --- 게시글 좋아요 버튼 클릭 이벤트 ---
 		document.querySelector('.btn-like').onclick = async (e) => {
-			// alert(`좋아요 버튼 클릭 : \${bno}`);
-			// boardLike.do 호출해서 좋아요 처리 -> board_like 추가
-			// 전달할 데이터 : 글번호
-			// 받는 데이터 : 결과메세지 msg
-			// 					'이 게시글에 좋아요를 하셨습니다.'
-			//					'이 게시글에 좋아요를 취소하셨습니다.'
-			//			    좋아요 개수 count
-			// 데이터를 응답 받으면 좋아요 개수를 최신화, 결과 메세지는 경고창으로 출력
+			// 1. 비동기(AJAX) 방식으로 서버의 boardLike.do를 호출합니다.
+			// fetch를 사용하면 페이지 새로고침 없이 데이터만 주고받을 수 있습니다.
 			const response = await fetch(`./boardLike.do?bno=\${bno}`);
+			
+			// 2. 서버가 보낸 응답(JSON)을 자바스크립트 객체로 변환합니다.
 			const data = await response.json();
 
-			
+			// 3. 처리 결과를 알림창으로 보여줍니다.
 			alert(data.msg);
-			//로그인 안했을 떄 경고창 확인 후 로그인 페이지로 이동
+			
+			// 4. 만약 로그인하지 않은 상태라면(resultCode 1), 로그인 페이지로 이동시킵니다.
 			if(data.resultCode == 1)
 				location.href="./loginView.do";
 
+			// 5. 화면에 표시된 좋아요 개수를 서버에서 받아온 최신 값(data.count)으로 바꿉니다.
 			document.querySelector('.btn-like span').innerHTML = data.count;
 		}
 
+		// --- 게시글 싫어요 버튼 클릭 이벤트 ---
 		document.querySelector('.btn-hate').onclick = async (e) => {
-		 	//1. ajax 호출할 url 완성
+			// 1. 싫어요 처리를 위한 URL을 만들고 서버에 요청합니다.
 			const url = `./boardHate.do?bno=\${bno}`;
-			//2. ajax 호출
 			const response = await fetch(url);
 			const data = await response.json();
-			//3. 결과 받아서 출력
-			// resultCode에 따라서 하는 일을 구분
-			// 1 : 로그인 안했을 떄
-			// 0 : 싫어요 했거나/취소했거나
-			console.log(data);
+			
+			// 2. 결과를 출력합니다.
 			alert(data.msg);
+			
+			// 3. 비로그인 시 로그인 화면으로 이동
 			if(data.resultCode == 1)
 				location.href = "./loginView.do";
 
-			//싫어요 개수 최신화
+			// 4. 싫어요 개수를 최신화합니다.
 			document.querySelector('.btn-hate span').innerHTML = data.count;
-			
 		}
 
-		// 댓글 좋아요/싫어요 버튼 클릭 이벤트 등록
+		// --- 댓글별 좋아요/싫어요 버튼 클릭 이벤트 등록 ---
+		// 모든 댓글의 좋아요/싫어요 버튼을 찾아서 클릭 이벤트를 하나씩 연결합니다.
 		document.querySelectorAll("button.btn-comment-like,button.btn-comment-hate").forEach(item => {
 			item.onclick = async (e) => {
-				console.log(e.target.className);
+				// 클릭된 버튼이 속한 댓글 아이템에서 댓글 번호(cno)를 가져옵니다.
 				const cno = e.target.closest(".comment-item").querySelector("input[name='cno']").value;
+				
+				// '좋아요'인지 '싫어요'인지 구분하여 요청 URL을 만듭니다.
 				let url = `./boardCommentLikeHate.do?cno=\${cno}&mode=`
 				if(e.target.className.indexOf('like') != -1){
-					//좋아요 처리
 					url += "like";					
 				}else{
-					//싫어요 처리
 					url += "hate";					
 				}
-				console.log(url);
-				// ajax
+				
+				// 서버에 비동기 요청을 보냅니다.
 				const response = await fetch(url);
 				const data = await response.json();
 				
-				console.log(data);
-				
+				// 처리 결과 메시지를 보여주고, 해당 버튼의 숫자(count)를 갱신합니다.
 				alert(data.msg);
 				e.target.querySelector('span').innerHTML = data.count;
-				
 			}
 		})
 	}

@@ -62,28 +62,28 @@ public class HandlerMapping {
 		case "update.do": // 실제 회원 정보 수정 처리
 			controller = new MemberUpdateController();
 			break;
-		case "boardWriteView.do":
+		case "boardWriteView.do": // 게시글 작성 화면 이동
 			controller = new BoardWriteViewController();
 			break;
-		case "boardWrite.do":
+		case "boardWrite.do": // 실제 게시글 작성 및 파일 업로드 처리
 			controller = new BoardWriteController();
 			break;
-		case "boardView.do":
+		case "boardView.do": // 게시글 상세 보기 (조회수 증가 포함)
 			controller = new BoardViewController();
 			break;
-		case "boardLike.do":
+		case "boardLike.do": // 게시글 좋아요 처리 (AJAX)
 			controller = new BoardLikeController();
 			break;
-		case "boardHate.do":
+		case "boardHate.do": // 게시글 싫어요 처리 (AJAX)
 			controller = new BoardHateController();
 			break;
-		case "boardCommentInsert.do":
+		case "boardCommentInsert.do": // 댓글 등록 처리
 			controller = new BoardCommentInsertController();
 			break;
-		case "boardCommentLikeHate.do":
+		case "boardCommentLikeHate.do": // 댓글 좋아요/싫어요 처리 (AJAX)
 			controller = new BoardCommentLikeHateController();
 			break;
-		case "boardUpdateView.do":
+		case "boardUpdateView.do": // 게시글 수정 화면 이동 (기존 내용 조회 포함)
 			controller = new BoardUpdateViewController();
 			break;
 		}
