@@ -8,6 +8,15 @@ public class BoardCommentDTO {
 	private int bno;
 	private int clike;
 	private int chate;
+	private String nickName;
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
 
 	public BoardCommentDTO() {
 	}
@@ -71,8 +80,9 @@ public class BoardCommentDTO {
 	@Override
 	public String toString() {
 		return "BoardCommentDTO [cno=" + cno + ", content=" + content + ", cdate=" + cdate + ", mno=" + mno + ", bno="
-				+ bno + ", clike=" + clike + ", chate=" + chate + "]";
+				+ bno + ", clike=" + clike + ", chate=" + chate + ", nickName=" + nickName + "]";
 	}
+
 	
 	
 	

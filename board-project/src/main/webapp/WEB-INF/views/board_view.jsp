@@ -112,7 +112,31 @@
 			</c:choose>
 
 			<!-- 댓글 목록 -->
-			
+			<div class="comment-list">
+				<c:forEach var="comment" items="${clist }">
+					<div class="comment-item">
+						<p class="comment-info">
+							작성자 : ${comment.nickName }, 작성일 : ${comment.cdate }
+						</p>
+						<p class="comment-content">${comment.content }</p>
+						<p class="comment-actions">
+							<button type="button" class="btn btn-comment-like">
+								<img src="./resources/img/like_icon.png">
+								<span>${comment.clike }</span>
+							</button>
+							<button type="button" class="btn btn-comment-hate">
+								<img src="./resources/img/like_icon.png">
+								<span>${comment.chate }</span>
+							</button>
+							<c:if test="${session.user.no == comment.mno }">
+								<a href="./commentDelete.do" class="btn btn-comment-delete">삭제</a>
+							</c:if>
+						</p>
+					</div>
+				</c:forEach>
+			</div>
+			<!-- 댓글 더보기 버튼 -->
+			<button type="button" class="btn btn-comment-more">댓글 더보기</button>
 		</section>
 	</main>
 
