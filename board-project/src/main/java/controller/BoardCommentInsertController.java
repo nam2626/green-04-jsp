@@ -2,9 +2,11 @@ package controller;
 
 import java.io.IOException;
 
+import dto.BoardCommentDTO;
 import dto.MemberDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import service.BoardService;
 import view.ModelAndView;
 
 public class BoardCommentInsertController implements Controller {
@@ -18,6 +20,15 @@ public class BoardCommentInsertController implements Controller {
 			mno = ((MemberDTO)request.getSession().getAttribute("user")).getNo();
 			int bno = Integer.parseInt(request.getParameter("bno"));
 			String content = request.getParameter("content");
+			
+			BoardCommentDTO comment = new BoardCommentDTO();
+			comment.setBno(bno);;
+			comment.setContent(content);
+			comment.setMno(mno);
+			
+			BoardService.getInstance().insertBoardComment(comment);
+			
+			view = new ModelAndView("./boardView.do?bno="+bno, true);
 			
 		}catch (NullPointerException e) {
 			//로그인 세션이 풀렸을때

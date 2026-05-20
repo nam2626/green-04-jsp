@@ -114,6 +114,11 @@
 		select count(*) from board_hate where bno = #{bno}
 	</select>
 	
+	<insert id="insertBoardComment">
+		insert into board_comment(bno,content,mno)
+		values(#{bno},#{content},#{mno})
+	</insert>
+	
 </mapper>
 
 

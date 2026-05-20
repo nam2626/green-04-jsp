@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import config.DBManager;
+import dto.BoardCommentDTO;
 import dto.BoardDTO;
 import dto.BoardFileDTO;
 import mapper.BoardMapper;
@@ -109,6 +110,10 @@ public class BoardService {
 	
 	public int selectBoardHateCount(int bno) {
 		return mapper.selectBoardHateCount(bno);
+	}
+
+	public int insertBoardComment(BoardCommentDTO comment) {
+		return mapper.insertBoardComment(comment);
 	}
 }
 

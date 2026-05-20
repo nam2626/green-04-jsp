@@ -3,6 +3,7 @@ package mapper;
 import java.util.HashMap;
 import java.util.List;
 
+import dto.BoardCommentDTO;
 import dto.BoardDTO;
 import dto.BoardFileDTO;
 
@@ -48,6 +49,8 @@ public interface BoardMapper {
 	int deleteBoardHate(HashMap<String, Integer> map);
 	
 	int selectBoardHateCount(int bno);
+
+	int insertBoardComment(BoardCommentDTO comment);
 
 }
 
