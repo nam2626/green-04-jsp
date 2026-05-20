@@ -79,6 +79,8 @@
 				
 				console.log(data);
 				
+				alert(data.msg);
+				e.target.querySelector('span').innerHTML = data.count;
 				
 			}
 		})
