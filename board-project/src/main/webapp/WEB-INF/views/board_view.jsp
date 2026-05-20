@@ -6,6 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>게시글 보기</title>
+<style>
+	button.btn-comment-like *,
+	button.btn-comment-hate *{
+		pointer-events: none;
+	}
+
+</style>
 <script>
 	window.onload = (e) => {
 		// 좋아요 버튼을 클릭 경고창 출력
@@ -51,6 +58,23 @@
 			document.querySelector('.btn-hate span').innerHTML = data.count;
 			
 		}
+
+		// 댓글 좋아요/싫어요 버튼 클릭 이벤트 등록
+		document.querySelectorAll("button.btn-comment-like,button.btn-comment-hate").forEach(item => {
+			item.onclick = async (e) => {
+				console.log(e.target.className);
+				const cno = e.target.closest(".comment-item").querySelector("input[name='cno']").value;
+				let url = `./boardCommentLikeHate.do?cno=\${cno}&mode=`
+				if(e.target.className.indexOf('like') != -1){
+					//좋아요 처리
+					url += "like";					
+				}else{
+					//싫어요 처리
+					url += "hate";					
+				}
+				console.log(url);
+			}
+		})
 	}
 
 </script>
@@ -115,6 +139,7 @@
 			<div class="comment-list">
 				<c:forEach var="comment" items="${clist }">
 					<div class="comment-item">
+						<input type="hidden" name="cno" value="${comment.cno }">
 						<p class="comment-info">
 							작성자 : ${comment.nickName }, 작성일 : ${comment.cdate }
 						</p>

@@ -551,3 +551,118 @@ article {
     text-align: center;
     padding: 12px 0;
 }
+
+/* 댓글 목록 */
+.comment-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.comment-item {
+    padding: 14px 16px;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    background-color: #fafafa;
+}
+
+.comment-info {
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 6px;
+}
+
+.comment-content {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.comment-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* 댓글 좋아요 / 싫어요 버튼 */
+.btn-comment-like,
+.btn-comment-hate {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    background-color: #fff;
+    color: #555;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+
+.btn-comment-like img,
+.btn-comment-hate img {
+    width: 13px;
+    height: 13px;
+}
+
+.btn-comment-hate img {
+    transform: rotateZ(180deg);
+}
+
+.btn-comment-like:hover {
+    background-color: #e8f0fe;
+    border-color: #1a73e8;
+    color: #1a73e8;
+    opacity: 1;
+}
+
+.btn-comment-hate:hover {
+    background-color: #fce8e6;
+    border-color: #d93025;
+    color: #d93025;
+    opacity: 1;
+}
+
+/* 댓글 삭제 버튼 */
+.btn-comment-delete {
+    padding: 4px 10px;
+    font-size: 12px;
+    background-color: #fff;
+    color: #d93025;
+    border: 1px solid #d93025;
+    border-radius: 5px;
+}
+
+.btn-comment-delete:hover {
+    background-color: #fce8e6;
+    opacity: 1;
+    text-decoration: none;
+}
+
+/* 댓글 더보기 버튼 */
+.btn-comment-more {
+    display: block;
+    width: 100%;
+    margin-top: 16px;
+    padding: 10px;
+    background-color: #f1f3f4;
+    color: #444;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.btn-comment-more:hover {
+    background-color: #e8f0fe;
+    border-color: #1a73e8;
+    color: #1a73e8;
+    opacity: 1;
+}
