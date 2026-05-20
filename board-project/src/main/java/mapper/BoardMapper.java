@@ -43,6 +43,12 @@ public interface BoardMapper {
 	/** 특정 게시글의 현재 좋아요 총 개수를 세어 가져옵니다. */
 	int selectBoardLikeCount(int bno);
 
+	int insertBoardHate(HashMap<String, Integer> map);
+	
+	int deleteBoardHate(HashMap<String, Integer> map);
+	
+	int selectBoardHateCount(int bno);
+
 }
 
 

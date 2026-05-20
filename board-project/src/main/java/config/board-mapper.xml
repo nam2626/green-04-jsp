@@ -100,6 +100,19 @@
 	<select id="selectBoardLikeCount" resultType="int">
 		select count(*) from board_like where bno = #{bno}
 	</select>
+
+
+	<insert id="insertBoardHate">
+		insert into board_hate(bno,no) values(#{bno},#{mno})
+	</insert>
+	
+	<delete id="deleteBoardHate">
+		delete from board_hate where bno = #{bno} and no = #{mno}
+	</delete>
+	
+	<select id="selectBoardHateCount" resultType="int">
+		select count(*) from board_hate where bno = #{bno}
+	</select>
 	
 </mapper>
 
