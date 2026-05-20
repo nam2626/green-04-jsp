@@ -98,11 +98,18 @@
 						- 댓글, 글번호
 					2. 로그인 안했을 때는 '댓글을 입력하실려면 로그인 하세요' 
 			-->
-			<form action="./boardCommentInsert.do" method="post" class="comment-form">
-				<textarea name="content" required></textarea>
-				<button>댓글달기</button>
-				<input type="hidden" name="bno" value="${board.bno}">
-			</form>
+			<c:choose>
+				<c:when test="${user != null}">
+					<form action="./boardCommentInsert.do" method="post" class="comment-form">
+						<textarea name="content" required></textarea>
+						<button>댓글달기</button>
+						<input type="hidden" name="bno" value="${board.bno}">
+					</form>
+				</c:when>
+				<c:otherwise>
+					<p class="comment-non-login">댓글을 입력하실려면 로그인 하세요</p>
+				</c:otherwise>
+			</c:choose>
 
 			<!-- 댓글 목록 -->
 
