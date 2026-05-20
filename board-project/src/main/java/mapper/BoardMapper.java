@@ -56,6 +56,8 @@ public interface BoardMapper {
 
 	int insertBoardCommentLikeHate(HashMap<String, Object> map);
 
+	int deleteBoardCommentLikeHate(HashMap<String, Object> map);
+
 
 }
 

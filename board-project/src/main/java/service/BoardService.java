@@ -135,6 +135,15 @@ public class BoardService {
 		map.put("mode", mode);
 		return mapper.insertBoardCommentLikeHate(map);
 	}
+
+	public int deleteBoardCommentLikeHate(int no, int cno, String mode) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("cno", cno);
+		map.put("mno", no);
+		map.put("mode", mode);
+		return mapper.deleteBoardCommentLikeHate(map);
+		
+	}
 }
 
 

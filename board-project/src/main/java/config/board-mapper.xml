@@ -141,6 +141,18 @@
 		values(#{mno},#{cno})
 	
 	</insert>
+	<delete id="deleteBoardCommentLikeHate">
+		delete from 
+		<choose>
+			<when test="mode == 'like'">
+				board_comment_like
+			</when>
+			<otherwise>
+				board_comment_hate
+			</otherwise>
+		</choose>
+		where no = #{mno} and cno = #{cno}
+	</delete>
 	
 </mapper>
 

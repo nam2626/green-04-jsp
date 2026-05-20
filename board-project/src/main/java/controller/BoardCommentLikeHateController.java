@@ -38,7 +38,7 @@ public class BoardCommentLikeHateController implements Controller {
 				}
 			} catch (Exception e) {
 				BoardService.getInstance()
-				.insertBoardCommentLikeHate(member.getNo(), cno, mode);
+				.deleteBoardCommentLikeHate(member.getNo(), cno, mode);
 				if(mode.equals("like")) {
 					map.put("msg", "해당 댓글에 좋아요를 취소 하셨습니다");
 				}else {
