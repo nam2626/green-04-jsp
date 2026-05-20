@@ -83,6 +83,9 @@ public class HandlerMapping {
 		case "boardCommentLikeHate.do":
 			controller = new BoardCommentLikeHateController();
 			break;
+		case "boardUpdateView.do":
+			controller = new BoardUpdateViewController();
+			break;
 		}
 		return controller;
 	}
