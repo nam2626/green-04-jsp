@@ -15,6 +15,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import config.APIKey;
 
@@ -50,13 +52,15 @@ public class APICallTestMain1 {
 			// 6. 응답 데이터를 출력
 			System.out.println(sb);
 			
-			
+			parseXML(sb.toString());
 			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}		
 	}
@@ -69,6 +73,13 @@ public class APICallTestMain1 {
 		InputStream is = new ByteArrayInputStream(xmlStr.getBytes());
 		Document doc = builder.parse(is);
 		doc.getDocumentElement().normalize();
+		
+		// 결과 코드
+		NodeList list = doc.getElementsByTagName("resultCode");
+		for(int i=0;i<list.getLength();i++) {
+			Node node = list.item(i);
+			System.out.println(node.getNodeName() + " : " + node.getTextContent());
+		}
 		
 		
 	}
