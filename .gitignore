@@ -39,3 +39,6 @@ Thumbs.db
 .idea/
 *.iml
 *.vscode/
+
+# -- API Key --
+APIKey.java
