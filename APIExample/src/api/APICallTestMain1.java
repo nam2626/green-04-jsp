@@ -1,13 +1,20 @@
 package api;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
 
 import config.APIKey;
 
@@ -51,13 +58,30 @@ public class APICallTestMain1 {
 			e.printStackTrace();
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
-		}
+		}		
+	}
+	// xml 파싱하는 메서드
+	private static void parseXML(String xmlStr) throws Exception{
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = factory.newDocumentBuilder();
 		
-		
-		// 5. 결과를 받아서 출력
-		
+		// String을 InputStream으로 변환
+		InputStream is = new ByteArrayInputStream(xmlStr.getBytes());
+		Document doc = builder.parse(is);
+		doc.getDocumentElement().normalize();
 		
 		
 	}
-
+	
 }
+
+
+
+
+
+
+
+
+
+
+
