@@ -80,6 +80,9 @@ public class APICallTestMain1 {
 			Node node = list.item(i);
 			System.out.println(node.getNodeName() + " : " + node.getTextContent());
 		}
+				
+		// 병원 한건 데이터 - item
+		// 병원명 - yadmNm, 주소 - addr, 연락처 - telno
 		
 		
 	}
