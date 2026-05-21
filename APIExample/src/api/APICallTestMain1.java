@@ -15,6 +15,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -83,9 +84,26 @@ public class APICallTestMain1 {
 				
 		// 병원 한건 데이터 - item
 		// 병원명 - yadmNm, 주소 - addr, 연락처 - telno
-		
+		list = doc.getElementsByTagName("item");
+		System.out.println("병원 수 : " + list.getLength());
+		for(int i=0;i<list.getLength();i++) {
+			Element item = (Element) list.item(i);
+			System.out.println(getElementValue(item, "yadmNm"));
+			System.out.println(getElementValue(item, "addr"));
+			System.out.println(getElementValue(item, "telno"));
+			System.out.println("------");
+		}
 		
 	}
+    // Element 내에서 태그값 추출
+	private static String getElementValue(Element el, String tagName) {
+        NodeList list = el.getElementsByTagName(tagName);
+        if (list.getLength() > 0) {
+            return list.item(0).getTextContent().trim();
+        }
+        return "-";
+    }
+	
 	
 }
 
