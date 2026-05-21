@@ -90,16 +90,22 @@ public class APICallTestMain2 {
 			System.out.println(node.getNodeName() + " : " + node.getTextContent());
 		}
 				
-		// 병원 한건 데이터 - item
-		// 병원명 - yadmNm, 주소 - addr, 연락처 - telno
 		list = doc.getElementsByTagName("item");
-		System.out.println("병원 수 : " + list.getLength());
+		String fcstTime = "";
 		for(int i=0;i<list.getLength();i++) {
 			Element item = (Element) list.item(i);
-			System.out.println(getElementValue(item, "yadmNm"));
-			System.out.println(getElementValue(item, "addr"));
-			System.out.println(getElementValue(item, "telno"));
-			System.out.println("------");
+			String value = getElementValue(item, "category");
+			if(!fcstTime.equals(getElementValue(item, "fcstTime")) && !fcstTime.isEmpty()) break;
+			switch(value) {
+			case "TMP":
+			case "TMN":
+			case "TMX":
+			case "PCP":
+			case "SKY":
+				if(fcstTime.isEmpty()) fcstTime = getElementValue(item, "fcstTime");
+				System.out.println(value + " : " + getElementValue(item, "fcstValue"));
+			}
+			
 		}
 		
 	}
